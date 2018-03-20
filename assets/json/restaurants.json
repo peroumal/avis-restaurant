@@ -1,0 +1,70 @@
+[
+   {
+      "restaurantName":"Bronco",
+      "address":"39 Rue des Petites Écuries, 75010 Paris",
+      "lat":48.8737815,
+      "long":2.3501649,
+      "ratings":[
+         {
+            "stars":4,
+            "comment":"Un excellent restaurant, j'y reviendrai ! Par contre il vaut mieux aimer la viande."
+         },
+         {
+            "stars":5,
+            "comment":"Tout simplement mon restaurant préféré !"
+         }
+      ]
+   },
+   {
+      "restaurantName":"Babalou",
+      "address":"4 Rue Lamarck, 75018 Paris",
+      "lat":48.8865035,
+      "long":2.3442197,
+      "ratings":[
+         {
+            "stars":5,
+            "comment":"Une minuscule pizzeria délicieuse cachée juste à côté du Sacré choeur !"
+         },
+         {
+            "stars":3,
+            "comment":"J'ai trouvé ça correct, sans plus"
+         }
+      ]
+   },
+   {
+      "restaurantName":"Clic délices",
+      "address":"51 RUE HENRI BECQUEREL JARRY, BAIE MAHAULT, Guadeloupe",
+      "lat":16.241463,
+      "long":-61.566684,
+      "ratings":[
+         {
+            "stars":4,
+            "comment":"En apparences une petite boulangerie, mais en réalité vous y passerez de très bon petits déjeuners et déjeuners"
+         }
+      ]
+   },
+   {
+      "restaurantName":"Restaurant l'amer",
+      "address":"Rue de la Vague Bleue, Deshaies, Guadeloupe",
+      "lat":16.307027,
+      "long":-61.794566,
+      "ratings":[
+         {
+            "stars":5,
+            "comment":"Parmis les meilleurs restaurant de Guadeloupe, la vue au bord de mer est époustouflante, et la la gastronomie est juste exceptionnelle"
+         }
+      ]
+   },
+   {
+      "restaurantName":"Hang Kee",
+      "address":"Galeries de Houelbourg Jarry 97122 Baie-Mahault, Guadeloupe",
+      "lat":16.2402728,
+      "long":-61.5677382,
+      "ratings":[
+         {
+            "stars":1,
+            "comment":"Le riz cantonais y est délicieux. Cepandant, j'ai trouvé des vers dans un de leur samousa, donc je n'y retournerai plus. A fuir"
+         }
+      ]
+   }
+]
