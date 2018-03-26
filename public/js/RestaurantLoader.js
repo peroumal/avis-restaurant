@@ -10,29 +10,22 @@ $.ajax({
     }
 });
 
-function initMap() {
-  if(navigator.geolocation){
-    navigator.geolocation.getCurrentPosition(function(pos){
-      console.log("Youhou ! ça marche");
-      map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 10,
-        center: {lat: pos.coords.latitude, lng: pos.coords.longitude}
-      });
-    },function(){
-      map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 10,
-        center: {lat: restaurants[0].lat, lng: restaurants[0].long}
-      });
-    });
-
-  }else {
-
+function displayMap(lat,lng){
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 10,
-    center: {lat: restaurants[0].lat, lng: restaurants[0].long}
+    center: {lat: lat, lng: lng}
+  });
+  restaurants.forEach(function(restaurant){
+    showRestaurant(restaurant);
   });
 }
-  restaurants.forEach(function(restaurant){
-    showRestaurant(new Restaurant(restaurant));
-  });
+
+function initMap() {
+  if(navigator.geolocation)
+    navigator.geolocation.getCurrentPosition(function(pos){
+      displayMap(pos.coords.latitude, pos.coords.longitude);
+    },function(){
+      displayMap(restaurants[0].lat,restaurants[0].long);
+    });
+   else displayMap(restaurants[0].lat,restaurants[0].long);
 }
