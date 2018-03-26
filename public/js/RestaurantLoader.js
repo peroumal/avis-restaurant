@@ -1,12 +1,14 @@
 var publicHtmlFolder = "http://localhost:6060/avis_restaurant/public/"
-var restaurants = [];
-var map =null;
+
 $.ajax({
     url: publicHtmlFolder+"assets/json/restaurants.json",
     async: false,
     dataType: "json",
     success: function(data){
-      restaurants = data;
+      restaurants =[];
+      data.forEach(function(restaurant){
+        restaurants.push(new Restaurant(restaurant));
+      });
     }
 });
 
@@ -15,12 +17,7 @@ function initMap() {
     zoom: 8,
     center: {lat: restaurants[0].lat, lng: restaurants[0].long}
   });
-
-  restaurants.forEach(function(r){
-    var position = {lat: r.lat, lng: r.long};
-    var marker = new google.maps.Marker({
-      position: position,
-      map: map
-    });
+  restaurants.forEach(function(restaurant){
+    addRestaurant(new Restaurant(restaurant));
   });
 }
