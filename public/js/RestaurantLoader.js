@@ -1,5 +1,3 @@
-var publicHtmlFolder = "http://localhost:6060/avis_restaurant/public/"
-
 $.ajax({
     url: publicHtmlFolder+"assets/json/restaurants.json",
     async: false,
@@ -18,6 +16,6 @@ function initMap() {
     center: {lat: restaurants[0].lat, lng: restaurants[0].long}
   });
   restaurants.forEach(function(restaurant){
-    addRestaurant(new Restaurant(restaurant));
+    showRestaurant(new Restaurant(restaurant));
   });
 }
