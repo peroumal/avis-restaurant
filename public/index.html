@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script src="js/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <script src="js/bootstrap.min.js"></script>
     <meta charset="utf-8">
-
-    <style>
-      #map {
-        width: 100%;
-        height: 400px;
-        background-color: grey;
-      }
-    </style>
   </head>
   <body>
-    <h3>My Google Maps Demo</h3>
-    <div id="map"></div>
+    <article class="row">
+      <section class="col-lg-9">
+        <div id="map"/>
+      </section>
+      <aside class="col-lg-3">
+        <h3>Restaurants</h3>
+        <div id="restaurant-list"/>
+      </aside>
+    </article>
+
 
     <script>
       //var publicHtmlFolder = "https://avis-restaurant.firebaseapp.com/"
-      var publicHtmlFolder = "http://localhost:6060/avis-restaurant/public/"
+      var publicHtmlFolder = "http://localhost:80/avis-restaurant/public/"
       var restaurants = [];
       var map =null;
     </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="assets/json/restaurants.json"></script>
     <script src="js/Avis.js"></script>
     <script src="js/Restaurant.js"></script>

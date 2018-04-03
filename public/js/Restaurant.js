@@ -8,4 +8,12 @@ function Restaurant(restaurant){
 
 Restaurant.prototype.onSelected = function() {
   console.log("Restaurant : "+this.restaurantName+" selected");
+  //displayRestaurantDesc();
+},
+
+Restaurant.prototype.displayRestaurantDesc = function(){
+  var p= document.createElement("p");
+  p.textContent = this.restaurantName;
+  var list = document.getElementById('restaurant-list');
+  list.textContent ="1234567";
 }

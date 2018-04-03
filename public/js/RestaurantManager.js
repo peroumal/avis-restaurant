@@ -9,4 +9,5 @@ function showRestaurant(restaurant){
     map.setZoom(12);
     restaurant.onSelected(map)
   });
+  //GLatLngBounds.containsLatLng(restaurant.lat,restaurant.long)
 }
