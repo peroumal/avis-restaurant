@@ -6,10 +6,7 @@ $.ajax({
       restaurants =[];
       data.forEach(function(restaurant){
         restaurants.push(new Restaurant(restaurant));
-        var p= document.createElement("p");
-        p.textContent = this.restaurantName;
-        var list = document.getElementById('restaurant-list');
-        list.textContent ="1234567";
+
       });
     }
 });
