@@ -6,7 +6,6 @@ $.ajax({
       restaurants =[];
       data.forEach(function(restaurant){
         restaurants.push(new Restaurant(restaurant));
-
       });
     }
 });
@@ -16,8 +15,8 @@ function displayMap(lat,lng){
     zoom: 10,
     center: {lat: lat, lng: lng}
   });
-  restaurants.forEach(function(restaurant){
-    showRestaurant(restaurant);
+  google.maps.event.addListener(map, 'bounds_changed', function() {
+      showRestaurants();
   });
 }
 

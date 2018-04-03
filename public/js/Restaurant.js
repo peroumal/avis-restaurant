@@ -17,3 +17,7 @@ Restaurant.prototype.displayRestaurantDesc = function(){
   var list = document.getElementById('restaurant-list');
   list.textContent ="1234567";
 }
+
+Restaurant.prototype.isVisible = function () {
+
+};
