@@ -1,6 +1,7 @@
 function Restaurant(restaurant){
   this.lat = restaurant.lat;
   this.long = restaurant.long;
+  this.address = restaurant.address;
   this.restaurantName = restaurant.restaurantName;
   this.position = {lat: restaurant.lat, lng: restaurant.long};
   this.marker = null;
