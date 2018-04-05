@@ -10,15 +10,7 @@ function showRestaurants(){
 function showRestaurant(restaurant){
   var marker = createRestaurantMarker(restaurant);
   if(isVisible(marker)){
-    var container= document.createElement("div");
-    var title= document.createElement("h4");
-    var address= document.createElement("p");
-    address.textContent = restaurant.address;
-    title.textContent = restaurant.restaurantName;
-
-    container.appendChild(title);
-    container.appendChild(address);
-    list.appendChild(container);
+    list.appendChild(restaurant.node);
   }
 }
 
