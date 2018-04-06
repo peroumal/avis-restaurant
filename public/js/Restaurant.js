@@ -43,6 +43,18 @@ Restaurant.prototype.getRatingAverage = function() {
   //displayRestaurantDesc();
 },
 
+Restaurant.prototype.appendsRatings = function() {
+
+  this.ratings.forEach(function(rating){
+    var stars = document.createElement("div");
+    var comment = document.createElement("p");
+    stars.textContent = rating.stars;
+    comment.textContent = rating.comment;
+    var rate = document.createElement()
+  });
+  this.node.appendChild();
+},
+
 Restaurant.prototype.displayRestaurantDesc = function(){
   var p= document.createElement("p");
   p.textContent = this.restaurantName;
