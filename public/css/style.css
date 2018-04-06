@@ -20,7 +20,7 @@ aside {
   padding-right: 10px;
   background: white;
   width:300px;
-  height: 100%;
+  padding-top: 80px;
 }
 
 
@@ -46,8 +46,32 @@ aside {
   background: #ABCABC;
 }
 
+#action-bar{
+  background: #283593;
+  position: fixed;
+  top: 0px;
+  padding: 16px 16px 16px 16px;
+  width:300px;
+}
+
+#action-icon{
+  display: inline-block;
+  margin-right: 8px;
+}
+
+#action-button{
+  display: inline-block;
+  margin-left: 16px;
+  float: right;
+  margin-right: 8px;
+}
+
+h5{
+  display: inline-block;
+  text-decoration-style: double;
+  color: #eeeeee;
+}
 h4{
     display: inline-block;
-
     margin-right: 3px;
 }
