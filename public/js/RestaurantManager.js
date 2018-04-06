@@ -9,9 +9,12 @@ function showRestaurants(){
 
 function showRestaurant(restaurant){
   var marker = createRestaurantMarker(restaurant);
-  if(isVisible(marker)){
-    list.appendChild(restaurant.node);
-  }
+  if(isVisible(marker))
+    appendRestaurant(restaurant);
+}
+
+function appendRestaurant(restaurant){
+  list.appendChild(restaurant.node);
 }
 
 function createRestaurantMarker(restaurant){
@@ -30,5 +33,5 @@ function createRestaurantMarker(restaurant){
 }
 
 function isVisible(marker){
-    return map.getBounds().contains(marker.getPosition());
+  return map.getBounds().contains(marker.getPosition());
 }

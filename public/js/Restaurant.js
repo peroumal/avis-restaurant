@@ -3,6 +3,7 @@ function Restaurant(restaurant){
   this.long = restaurant.long;
   this.address = restaurant.address;
   this.ratings = restaurant.ratings;
+  this.star = new Star(this.getRatingAverage());
   this.restaurantName = restaurant.restaurantName;
   this.position = {lat: restaurant.lat, lng: restaurant.long};
   this.marker = null;
@@ -14,13 +15,11 @@ Restaurant.prototype.createNode = function() {
   var container= document.createElement("div");
   var title= document.createElement("h4");
   var address= document.createElement("p");
-  var rating= document.createElement("div");
   address.textContent = this.address;
   title.textContent = this.restaurantName;
-  rating.textContent = "note moyenne : "+this.getRatingAverage()+"/5";
   container.appendChild(title);
+  container.appendChild(this.star.node);
   container.appendChild(address);
-  container.appendChild(rating);
   this.node = container;
 }
 

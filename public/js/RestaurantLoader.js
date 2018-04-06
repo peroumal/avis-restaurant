@@ -4,8 +4,10 @@ $.ajax({
     dataType: "json",
     success: function(data){
       restaurants =[];
-      data.forEach(function(restaurant){
-        restaurants.push(new Restaurant(restaurant));
+      data.forEach(function(e){
+        restaurant = new Restaurant(e);
+        restaurants.push(restaurant);
+        appendRestaurant(restaurant);
       });
     }
 });
