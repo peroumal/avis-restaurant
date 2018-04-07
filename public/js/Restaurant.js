@@ -22,6 +22,7 @@ Restaurant.prototype.createNode = function() {
   container.appendChild(this.star.node);
   container.appendChild(address);
   this.node = container;
+  return this.node;
 },
 
 Restaurant.prototype.createRatingNode = function(name, value, comment) {
@@ -41,6 +42,27 @@ Restaurant.prototype.createRatingNode = function(name, value, comment) {
 
   return container;
 },
+
+Restaurant.prototype.createInfoNode = function(){
+  var container= document.createElement("div");
+  container.appendChild(this.createTitleNode("Infos"));
+  container.appendChild(this.createNode());
+  container.appendChild(this.createTitleNode("Avis"));
+  this.ratings.forEach(function(rate){
+    var name = rate.name;
+    if (name == undefined || name== null) name="Anonyme";
+    container.appendChild(restaurant.createRatingNode(name,rate.stars,rate.comment));
+  });
+  return container;
+}
+
+Restaurant.prototype.createTitleNode = function (name) {
+  var titleNode = document.createElement("h3");
+  titleNode.textContent=name;
+  return titleNode;
+};
+
+
 
 Restaurant.prototype.onSelected = function() {
   console.log("Restaurant : "+this.restaurantName+" selected");
