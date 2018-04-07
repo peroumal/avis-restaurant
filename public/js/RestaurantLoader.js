@@ -7,7 +7,8 @@ $.ajax({
       data.forEach(function(e){
         restaurant = new Restaurant(e);
         restaurants.push(restaurant);
-        appendRestaurant(restaurant);
+
+        //For offline test : appendRestaurant(restaurant);
       });
     }
 });
