@@ -38,6 +38,7 @@ function createRestaurantMarker(restaurant){
 function displayInfoRestaurant(restaurant){
   list.textContent ="";
   list.appendChild(restaurant.node);
+  list.appendChild(restaurant.createRatingNode("rayan",3,"pas mal"));
 
 }
 
