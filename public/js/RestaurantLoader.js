@@ -7,7 +7,6 @@ $.ajax({
       data.forEach(function(e){
         restaurant = new Restaurant(e);
         restaurants.push(restaurant);
-
         //For offline test : appendRestaurant(restaurant);
       });
     }
