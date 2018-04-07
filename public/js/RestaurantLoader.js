@@ -11,7 +11,11 @@ $.ajax({
       });
     }
 });
+window.addEventListener("resize", function(e){
+  var list = document.getElementById("restaurant-list");
 
+  console.log("resizing",window.innerHeight);
+});
 function displayMap(lat,lng){
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 10,

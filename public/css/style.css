@@ -1,5 +1,7 @@
 body {
   height:600px;
+  margin: 0px;
+  padding:0px;
 }
 
 #map {
@@ -7,23 +9,24 @@ body {
   width: 100%;
   position: fixed;
   left: 300px;
+  margin: 0;
+  padding: 0;
   bottom: 0px;
   display: inline-block;
   background-color: grey;
 }
 
 #restaurant-list{
-  display:relative;
-  bottom: 0px;
 }
 
 aside {
-
   display: inline-block;
   padding-left: 20px;
   padding-right: 10px;
+  top:66px;
+  overflow:scroll;
+  height: 85%;
   position: fixed;
-  top:60px;
   padding-top: 20px;
   background: white;
   width:300px;
