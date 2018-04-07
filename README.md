@@ -12,4 +12,13 @@ $.ajax({
   async: true,
   dataType: "script",
 });
+
+
+function getPhotoUrlAt(lat,lon){
+  return "https://maps.googleapis.com/maps/api/streetview?size=600x300&location="
+    +lat
+    +","
+    +lon
+    +"&heading=151.78&pitch=-0.76&key=YOUR_API_KEY"
+}
 ```
