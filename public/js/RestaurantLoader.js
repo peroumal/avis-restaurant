@@ -1,3 +1,4 @@
+var list = document.getElementById("restaurant-list");
 $.ajax({
     url: publicHtmlFolder+"assets/json/restaurants.json",
     async: false,
@@ -11,11 +12,20 @@ $.ajax({
       });
     }
 });
-window.addEventListener("resize", function(e){
-  var list = document.getElementById("restaurant-list");
 
-  console.log("resizing",window.innerHeight);
-});
+function setRestaurantListDimension(){
+  var actionBarHeight = window.getComputedStyle(
+    document.getElementById("action-bar"))
+    .getPropertyValue("height")
+    .split("px")[0];
+  var height = window.innerHeight-actionBarHeight;
+  list.style.height = height+"px";
+  console.log("resizing",height);
+}
+
+window.addEventListener("resize", setRestaurantListDimension);
+window.addEventListener("load", setRestaurantListDimension);
+
 function displayMap(lat,lng){
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 10,
