@@ -1,5 +1,6 @@
 
 var list = document.getElementById('restaurant-list');
+
 function showRestaurants(){
     list.textContent = "";
     restaurants.forEach(function(restaurant){
@@ -25,11 +26,19 @@ function createRestaurantMarker(restaurant){
   });
 
   restaurant.marker.addListener('click', function(){
+    mode = "discover";
     map.setCenter(restaurant.marker.getPosition());
-    map.setZoom(12);
+    map.setZoom(16);
+    displayInfoRestaurant(restaurant)
     restaurant.onSelected(map)
   });
   return restaurant.marker;
+}
+
+function displayInfoRestaurant(restaurant){
+  list.textContent ="";
+  list.appendChild(restaurant.node);
+
 }
 
 function isVisible(marker){

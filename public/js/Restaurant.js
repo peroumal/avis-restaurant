@@ -24,6 +24,24 @@ Restaurant.prototype.createNode = function() {
   this.node = container;
 },
 
+Restaurant.prototype.createRatingNode = function(name, value, comment) {
+  var container= document.createElement("div");
+
+  var nameNode= document.createElement("b");
+  nameNode.textContent = name;
+  container.appendChild(nameNode);
+
+  var star = new Star();
+  star.setValue(value);
+  container.appendChild(star.node);
+
+  var commentNode= document.createElement("p");
+  commentNode.textContent = comment;
+  container.appendChild(commentNode);
+
+  return container;
+},
+
 Restaurant.prototype.onSelected = function() {
   console.log("Restaurant : "+this.restaurantName+" selected");
   //displayRestaurantDesc();
