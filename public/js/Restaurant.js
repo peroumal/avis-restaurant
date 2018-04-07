@@ -3,7 +3,7 @@ function Restaurant(restaurant){
   this.long = restaurant.long;
   this.address = restaurant.address;
   this.ratings = restaurant.ratings;
-  this.star = new Star(this.getRatingAverage());
+  this.star = new Star();
   this.restaurantName = restaurant.restaurantName;
   this.position = {lat: restaurant.lat, lng: restaurant.long};
   this.marker = null;
@@ -18,10 +18,11 @@ Restaurant.prototype.createNode = function() {
   address.textContent = this.address;
   title.textContent = this.restaurantName;
   container.appendChild(title);
+  this.star.setValue(this.getRatingAverage());
   container.appendChild(this.star.node);
   container.appendChild(address);
   this.node = container;
-}
+},
 
 Restaurant.prototype.onSelected = function() {
   console.log("Restaurant : "+this.restaurantName+" selected");
@@ -59,7 +60,7 @@ Restaurant.prototype.displayRestaurantDesc = function(){
   p.textContent = this.restaurantName;
   var list = document.getElementById('restaurant-list');
   list.textContent ="1234567";
-}
+},
 
 Restaurant.prototype.isVisible = function () {
 
