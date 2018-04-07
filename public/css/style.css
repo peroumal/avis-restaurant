@@ -1,9 +1,24 @@
 
 #map {
-  min-width: 400px;
   height: 600px;
   width: 100%;
+  position: fixed;
+  left: 300px;
+
+  display: inline-block;
   background-color: grey;
+}
+
+aside {
+
+  display: inline-block;
+  padding-left: 20px;
+  padding-right: 10px;
+  position: fixed;
+  top:0px;
+  background: white;
+  width:200px;
+  padding-top: 80px;
 }
 
 #ratings {
