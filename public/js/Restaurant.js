@@ -13,14 +13,16 @@ function Restaurant(restaurant){
 
 Restaurant.prototype.createNode = function() {
   var container= document.createElement("div");
+
   var title= document.createElement("h4");
-  var address= document.createElement("p");
-  address.textContent = this.address;
   title.textContent = this.restaurantName;
   container.appendChild(title);
+
   this.star.setValue(this.getRatingAverage());
   container.appendChild(this.star.node);
-  container.appendChild(address);
+
+  container.appendChild(this.createAddressNode());
+
   this.node = container;
   return this.node;
 },
@@ -43,10 +45,29 @@ Restaurant.prototype.createRatingNode = function(name, value, comment) {
   return container;
 },
 
+Restaurant.prototype.createStreetViewNode = function(){
+  var container= document.createElement("div");
+
+  var photo = document.createElement("img");
+  photo.style.marginLeft="-20px";
+  photo.style.marginTop="-20px";
+  photo.setAttribute("src",getPhotoUrlAt(this.lat,this.long));
+  photo.setAttribute("alt",this.address);
+  photo.setAttribute("title",this.restaurantName);
+  container.appendChild(photo);
+  container.appendChild(this.createAddressNode());
+  return container;
+},
+
+Restaurant.prototype.createAddressNode = function () {
+  var address= document.createElement("p");
+  address.textContent = this.address;
+  return address;
+},
+
 Restaurant.prototype.createInfoNode = function(){
   var container= document.createElement("div");
-  container.appendChild(this.createTitleNode("Infos"));
-  container.appendChild(this.createNode());
+  container.appendChild(this.createStreetViewNode());
   container.appendChild(this.createTitleNode("Avis"));
   this.ratings.forEach(function(rate){
     var name = rate.name;
