@@ -1,9 +1,7 @@
 
-section {
+#map {
+  min-width: 400px;
   height: 600px;
-  position: fixed;
-  bottom: 0px;
-  left: 300px;
   width: 100%;
   background-color: grey;
 }
@@ -12,26 +10,6 @@ section {
   position: fixed;
   bottom: 0;
   width: 100%;
-}
-
-aside {
-  display: inline-block;
-  padding-left: 20px;
-  padding-right: 10px;
-  background: white;
-  width:300px;
-  padding-top: 80px;
-}
-
-
-@media only screen and (width:600px) {
-  aside {
-    background: red;
-    margin-left: 20px;
-    margin-right: 20px;
-    width:100%;
-    height: auto;
-  }
 }
 
 .star{
