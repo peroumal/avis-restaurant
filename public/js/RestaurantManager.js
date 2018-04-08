@@ -39,7 +39,6 @@ function createRestaurantMarker(restaurant){
 function displayInfoRestaurant(restaurant){
   list.textContent ="";
   ActionBar.set(restaurant.restaurantName,showRestaurants);
-
   list.appendChild(restaurant.createInfoNode());
 }
 
