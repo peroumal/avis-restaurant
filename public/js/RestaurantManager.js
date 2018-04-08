@@ -6,7 +6,7 @@ function showRestaurants(){
     restaurants.forEach(function(restaurant){
       showRestaurant(restaurant);
     });
-    ActionBar.back = null;
+    ActionBar.set(ActionBar.HOME);
 }
 
 function showRestaurant(restaurant){
@@ -38,11 +38,8 @@ function createRestaurantMarker(restaurant){
 
 function displayInfoRestaurant(restaurant){
   list.textContent ="";
-  ActionBar.set(restaurant.restaurantName);
-  ActionBar.back = function(){
-    showRestaurants();
-    console.log("back called");
-  };
+  ActionBar.set(restaurant.restaurantName,showRestaurants);
+
   list.appendChild(restaurant.createInfoNode());
 }
 
