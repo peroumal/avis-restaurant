@@ -50,6 +50,18 @@ function displayMap(lat,lng){
   });
 }
 
+function toNormalScreen(){
+  if (document.exitFullscreen) {
+          document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen();
+      } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+      }
+}
+
 function initMap() {
   if(navigator.geolocation)
     navigator.geolocation.getCurrentPosition(function(pos){

@@ -30,8 +30,9 @@ function createRestaurantMarker(restaurant){
     mode = "discover";
     map.setCenter(restaurant.marker.getPosition());
     map.setZoom(16);
-    displayInfoRestaurant(restaurant)
-    restaurant.onSelected(map)
+    displayInfoRestaurant(restaurant);
+    restaurant.onSelected(map);
+    toNormalScreen();
   });
   return restaurant.marker;
 }
