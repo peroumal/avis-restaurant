@@ -18,12 +18,16 @@ function getFilterNode(){
 };
 
 function showRestaurants(){
+
+  minStar.onUpdate = showRestaurants;
+  maxStar.onUpdate = showRestaurants;
   //var filter = new Filter();
     description.textContent = "";
     description.appendChild(getFilterNode());
     list.textContent = "";
     restaurants.forEach(function(restaurant){
-      showRestaurant(restaurant);
+      var val = restaurant.getRatingAverage();
+      if(minStar.value<=val && maxStar.value>=val)showRestaurant(restaurant);
     });
     ActionBar.set(ActionBar.HOME);
 }

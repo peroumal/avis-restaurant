@@ -47,10 +47,12 @@ window.addEventListener("resize", setRestaurantListDimension);
 window.addEventListener("load", setRestaurantListDimension);
 
 function displayMap(lat,lng){
+  
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 10,
     center: {lat: lat, lng: lng}
   });
+
   google.maps.event.addListener(map, 'bounds_changed', function() {
       if(mode == "near") showRestaurants();
   });
