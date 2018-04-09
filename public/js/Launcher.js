@@ -34,13 +34,6 @@ function setRestaurantListDimension(){
   if(actionBarWidth*2>=window.innerWidth){
     document.getElementById("map").style.left = "0px";
     document.getElementById("map").style.width = (window.innerWidth)+"px";
-    var rh = window.getComputedStyle(document.getElementById("results"))
-    .getPropertyValue("height")
-    .split("px")[0];
-    if(rh<ah){
-      ah = rh;
-      document.getElementsByTagName("nav")[0].style.height = "auto";
-    }
   }else {
     document.getElementById("map").style.left = actionBarWidth+"px";
     document.getElementById("map").style.width = (window.innerWidth-actionBarWidth)+"px";
