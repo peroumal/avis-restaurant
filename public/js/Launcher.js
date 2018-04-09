@@ -33,12 +33,15 @@ function setRestaurantListDimension(){
   if(actionBarWidth*2>=window.innerWidth){
     document.getElementById("map").style.left = "0px";
     document.getElementById("map").style.width = (window.innerWidth)+"px";
+    document.getElementById("restaurant-list").style.height = document.getElementById("results").style.height;
+    document.getElementsByTagName("nav")[0].style.height = "auto";
   }else {
     document.getElementById("map").style.left = actionBarWidth+"px";
     document.getElementById("map").style.width = (window.innerWidth-actionBarWidth)+"px";
+    document.getElementById("restaurant-list").style.height = (window.innerHeight-actionBarHeight)+"px";
+    document.getElementsByTagName("nav")[0].style.height = "100%";
   }
   document.getElementById("map").style.height = (window.innerHeight)+"px";
-  document.getElementById("restaurant-list").style.height = (window.innerHeight-actionBarHeight)+"px";
 }
 
 window.addEventListener("resize", setRestaurantListDimension);
