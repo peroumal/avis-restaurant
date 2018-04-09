@@ -3,8 +3,8 @@ var list = document.getElementById('results');
 var description = document.getElementById('description');
 var minStar = new Star(true);
 var maxStar = new Star(true);
-minStar.setValue(1);
-maxStar.setValue(4);
+//minStar.setValue(1);
+maxStar.setValue(2);
 
 function getFilterNode(){
     var container = document.createElement("div");

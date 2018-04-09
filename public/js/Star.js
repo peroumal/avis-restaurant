@@ -5,20 +5,28 @@ function Star(editable){
   for(var i=0;i<5;i++){
     var img = document.createElement("img");
     this.editable = editable;
-    if(this.editable) img.setAttribute("src","assets/pic/star-unselected.svg");
-    else img.setAttribute("src","assets/pic/star-empty.svg");
     img.classList = "star";
     this.stars.push(img);
     this.node.appendChild(img);
   }
 };
 
+Star.prototype.refreshDrawable = function () {
+    this.checked = "empty";
+    if(this.editable){
+        this.checked = "unselected";
+        console.log("is unselected");
+    }
+}
+
 Star.prototype.setValue = function (value) {
   var pos=0;
-  console.log("onSetStar:"+this.editable);
+
+  this.refreshDrawable();
+  console.log("onSetStar:"+value+"checked="+this.checked);
   this.stars.forEach(function(star){
-    var status = ((this.editable)?"unselected":"emptys");
-    if(pos++ < value) status = ((this.editable)?"selected":"filled");
+    var status = this.checked;
+    if(pos++ < value) status = "filled";
     star.setAttribute("src","assets/pic/star-"+status+".svg");
   });
 };
