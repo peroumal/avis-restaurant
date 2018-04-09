@@ -1,10 +1,27 @@
 
 var list = document.getElementById('results');
 var description = document.getElementById('description');
+var minStar = new Star();
+var maxStar = new Star();
+minStar.setValue(1);
+maxStar.setValue(4);
+
+function getFilterNode(){
+    var container = document.createElement("div");
+    var h6 = document.createElement("h6");
+    h6.textContent = "Afficher les restaurants notés entre : " ;
+    container.appendChild(h6);
+    container.appendChild(this.minStar.node);
+    container.appendChild(document.createTextNode(" et "));
+    container.appendChild(this.maxStar.node);
+    return container;
+};
 
 function showRestaurants(){
-    list.textContent = "";
+  //var filter = new Filter();
     description.textContent = "";
+    description.appendChild(getFilterNode());
+    list.textContent = "";
     restaurants.forEach(function(restaurant){
       showRestaurant(restaurant);
     });

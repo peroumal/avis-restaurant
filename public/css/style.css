@@ -10,6 +10,12 @@ body {
   background-color: grey;
 }
 
+.separator{
+  height: 1px;
+  width: 100%;
+  background: #555;
+}
+
 nav {
   box-shadow: 1px 1px 1px grey;
   position: fixed;
@@ -19,17 +25,21 @@ nav {
 }
 
 #restaurant-list {
+  overflow:scroll;
+  width: 300px;
   padding-left: 20px;
   padding-right: 10px;
   opacity: 0.85;
-  overflow:scroll;
-  width: 300px;
-  padding-top: 20px;
   background: white;
 }
-
 #description {
-
+  background: #eeeeee;
+  padding-left: 20px;
+  padding-right: 10px;
+  padding-top: 20px;
+}
+#results {
+  padding-top: 20px;
 }
 
 #ratings {
