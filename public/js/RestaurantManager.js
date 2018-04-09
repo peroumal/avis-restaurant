@@ -1,8 +1,10 @@
 
-var list = document.getElementById('restaurant-list');
+var list = document.getElementById('results');
+var description = document.getElementById('description');
 
 function showRestaurants(){
     list.textContent = "";
+    description.textContent = "";
     restaurants.forEach(function(restaurant){
       showRestaurant(restaurant);
     });
