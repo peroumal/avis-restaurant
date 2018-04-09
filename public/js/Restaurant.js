@@ -47,10 +47,8 @@ Restaurant.prototype.createRatingNode = function(name, value, comment) {
 
 Restaurant.prototype.createStreetViewNode = function(){
   var container= document.createElement("div");
-
   var photo = document.createElement("img");
-  photo.style.marginLeft="-20px";
-  photo.style.marginTop="-20px";
+  photo.style.marginLeft="-10px";
   photo.setAttribute("src",getPhotoUrlAt(this.lat,this.long));
   photo.setAttribute("alt",this.address);
   photo.setAttribute("title",this.restaurantName);
@@ -67,7 +65,6 @@ Restaurant.prototype.createAddressNode = function () {
 
 Restaurant.prototype.createInfoNode = function(){
   var container= document.createElement("div");
-  container.appendChild(this.createStreetViewNode());
   container.appendChild(this.createTitleNode("Avis"));
   this.ratings.forEach(function(rate){
     var name = rate.name;
