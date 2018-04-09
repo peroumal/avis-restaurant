@@ -20,7 +20,7 @@ class Star{
     var pos = this.stars.indexOf(img)+1;
     var context = this;
 
-    img.addEventListener("mouseover",function(e){
+    img.addEventListener("mouseenter",function(e){
       for (var i=0;i<pos;i++) context.stars[i].setAttribute("src","assets/pic/star-onselected.svg");
       for (var j=pos;j<context.stars.length;j++) context.stars[j].setAttribute("src","assets/pic/star-unselected.svg");
     });

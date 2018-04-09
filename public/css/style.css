@@ -32,12 +32,7 @@ nav {
   opacity: 0.85;
   background: white;
 }
-#description {
-  background: #eeeeee;
-  padding-left: 20px;
-  padding-right: 10px;
-  padding-top: 20px;
-}
+
 #results {
   padding-top: 20px;
 }
@@ -73,6 +68,13 @@ nav {
 
 #action-title{
   color: #eeeeee;
+}
+
+#description {
+  background: #eeeeee;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
 }
 
 h5{
