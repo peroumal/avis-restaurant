@@ -30,17 +30,23 @@ function setRestaurantListDimension(){
       .getPropertyValue("width")
       .split("px")[0];
 
+  var ah = (window.innerHeight-actionBarHeight);
   if(actionBarWidth*2>=window.innerWidth){
     document.getElementById("map").style.left = "0px";
     document.getElementById("map").style.width = (window.innerWidth)+"px";
-    document.getElementById("restaurant-list").style.height = document.getElementById("results").style.height;
-    document.getElementsByTagName("nav")[0].style.height = "auto";
+    var rh = window.getComputedStyle(document.getElementById("results"))
+    .getPropertyValue("height")
+    .split("px")[0];
+    if(rh<ah){
+      ah = rh;
+      document.getElementsByTagName("nav")[0].style.height = "auto";
+    }
   }else {
     document.getElementById("map").style.left = actionBarWidth+"px";
     document.getElementById("map").style.width = (window.innerWidth-actionBarWidth)+"px";
-    document.getElementById("restaurant-list").style.height = (window.innerHeight-actionBarHeight)+"px";
     document.getElementsByTagName("nav")[0].style.height = "100%";
   }
+  document.getElementById("restaurant-list").style.height = ah+"px";
   document.getElementById("map").style.height = (window.innerHeight)+"px";
 }
 

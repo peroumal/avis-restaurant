@@ -1,8 +1,8 @@
 
 var list = document.getElementById('results');
 var description = document.getElementById('description');
-var minStar = new Star();
-var maxStar = new Star();
+var minStar = new Star(true);
+var maxStar = new Star(true);
 minStar.setValue(1);
 maxStar.setValue(4);
 
