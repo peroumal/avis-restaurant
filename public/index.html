@@ -10,20 +10,18 @@
     <meta charset="utf-8">
   </head>
   <body>
-      <article id="map">
-
-      </article>
-
+      <article id="map"></article>
       <nav>
-        <section id="action-bar">
+        <header id="action-bar">
           <img id="action-icon" src="assets/pic/search.svg"/>
           <h5 id="action-title">Liste des restaurants</h5>
+        </header>
+        <section id="restaurant-list">
+          <aside id="description"></aside>
+          <section id="results"></section>
         </section>
-
-        <aside id="restaurant-list">
-
-        </aside>
       </nav>
+      
     <script>
       //var publicHtmlFolder = "https://avis-restaurant.firebaseapp.com/"
       var publicHtmlFolder = "http://localhost:80/avis-restaurant/public/"

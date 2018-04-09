@@ -54,8 +54,8 @@ Restaurant.prototype.createStreetViewNode = function(){
   photo.setAttribute("src",getPhotoUrlAt(this.lat,this.long));
   photo.setAttribute("alt",this.address);
   photo.setAttribute("title",this.restaurantName);
-  container.appendChild(photo);
   container.appendChild(this.createAddressNode());
+  container.appendChild(photo);
   return container;
 },
 

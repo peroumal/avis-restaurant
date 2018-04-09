@@ -18,7 +18,7 @@ nav {
   height: 100%;
 }
 
-aside {
+#restaurant-list {
   padding-left: 20px;
   padding-right: 10px;
   opacity: 0.85;
@@ -26,6 +26,10 @@ aside {
   width: 300px;
   padding-top: 20px;
   background: white;
+}
+
+#description {
+
 }
 
 #ratings {
@@ -50,6 +54,7 @@ aside {
 
 #action-bar{
   background: #283593;
+    box-shadow: 1px 1px 1px #AAA;
 }
 
 #action-icon{
