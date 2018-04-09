@@ -34,7 +34,7 @@ Restaurant.prototype.createRatingNode = function(name, value, comment) {
   nameNode.textContent = name;
   container.appendChild(nameNode);
 
-  var star = new Star();
+  var star = new Star("filled");
   star.setValue(value);
   container.appendChild(star.node);
 
