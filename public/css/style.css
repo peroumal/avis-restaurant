@@ -11,7 +11,7 @@ body {
 }
 
 nav {
-  box-shadow: 2px 2px 2px #CCC;
+  box-shadow: 1px 1px 1px grey;
   position: fixed;
   top: 0px;
   width:300px;
@@ -54,7 +54,6 @@ nav {
 
 #action-bar{
   background: #283593;
-    box-shadow: 1px 1px 1px #AAA;
 }
 
 #action-icon{
@@ -63,11 +62,15 @@ nav {
 }
 
 #action-title{
-  display: inline-block;
   color: #eeeeee;
+}
+
+h5{
+  display: inline-block;
   font-weight: bolder;
   font-size: 1.3em;
 }
+
 
 h4{
     display: inline-block;
