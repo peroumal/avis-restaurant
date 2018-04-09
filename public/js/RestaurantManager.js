@@ -1,10 +1,10 @@
 
 var list = document.getElementById('results');
 var description = document.getElementById('description');
-var minStar = new Star(true);
-var maxStar = new Star(true);
-//minStar.setValue(1);
-maxStar.setValue(2);
+var minStar = new Star("selected");
+var maxStar = new Star("selected");
+minStar.setValue(1);
+maxStar.setValue(5);
 
 function getFilterNode(){
     var container = document.createElement("div");

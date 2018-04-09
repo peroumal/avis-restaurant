@@ -3,7 +3,7 @@ function Restaurant(restaurant){
   this.long = restaurant.long;
   this.address = restaurant.address;
   this.ratings = restaurant.ratings;
-  this.star = new Star();
+  this.star = new Star("filled");
   this.restaurantName = restaurant.restaurantName;
   this.position = {lat: restaurant.lat, lng: restaurant.long};
   this.marker = null;
