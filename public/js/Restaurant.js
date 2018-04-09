@@ -78,9 +78,19 @@ Restaurant.prototype.createInfoNode = function(){
 }
 
 Restaurant.prototype.createTitleNode = function (name) {
+
+  var container= document.createElement("div");
   var titleNode = document.createElement("h3");
   titleNode.textContent=name;
-  return titleNode;
+  var button = document.createElement("button");
+  button.textContent = "Ajouter un avis";
+  button.setAttribute("data-toggle","modal");
+  button.setAttribute("data-target","#exampleModal");
+  button.classList.add("btn");
+  button.classList.add("btn-primary");
+  container.appendChild(titleNode);
+  container.appendChild(button);
+  return container;
 };
 
 

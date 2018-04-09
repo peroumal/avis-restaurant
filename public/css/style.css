@@ -76,3 +76,9 @@ h4{
     display: inline-block;
     margin-right: 3px;
 }
+
+h3{
+      padding-top: 6px;
+      margin-right: 10px;
+      display: inline-block;
+}
