@@ -90,6 +90,7 @@ Restaurant.prototype.createTitleNode = function (name) {
   var minStar = new Star("selected");
   minStar.enableDescriptions(document.getElementById("exampleModalLabel"),["aucun avis","horrible","bof","correct","très bien","parfait"]);
   minStar.setValue(0);
+
   body.appendChild(minStar.node);
 
   var username = document.createElement("input");
@@ -104,6 +105,23 @@ Restaurant.prototype.createTitleNode = function (name) {
   comment.classList = "comment";
   comment.setAttribute("placeholder","Tapez cotre commentaire ici");
   body.appendChild(comment);
+
+  minStar.onUpdate = function(value){
+    var submit = document.getElementById("modal-submit");
+    if(minStar.value>0){
+        submit.classList = "btn btn-primary"
+        submit.textContent = "Ajouter un avis"
+    }else{
+      submit.classList = "btn btn-secondary"
+      submit.textContent = "Annuler"
+      return;
+    }
+    var context = this;
+    submit.addEventListener("click",function(value){
+        console.console.log("onClick-Avis:value"+value);
+        //context.ratings.push();
+    });
+  };
 
   container.appendChild(titleNode);
   container.appendChild(button);
