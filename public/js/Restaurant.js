@@ -92,10 +92,17 @@ Restaurant.prototype.createTitleNode = function (name) {
   minStar.setValue(0);
   body.appendChild(minStar.node);
 
+  var username = document.createElement("input");
+  username.setAttribute("type","text");
+  username.setAttribute("placeholder","indiquez votre nom");
+  body.appendChild(username);
+
   var comment = document.createElement("input");
+  comment.style.display ="block";
   comment.setAttribute("type","text");
   comment.setAttribute("placeholder","tapez cotre commentaire");
   body.appendChild(comment);
+
   container.appendChild(titleNode);
   container.appendChild(button);
   return container;
