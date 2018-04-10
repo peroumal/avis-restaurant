@@ -1,12 +1,12 @@
+
 function Restaurant(restaurant){
   this.lat = restaurant.lat;
   this.long = restaurant.long;
   this.address = restaurant.address;
+  this.refresh = null;
+  this.rated = false;
   this.ratings = restaurant.ratings;
-  this.myRating = {
-    stars:0,
-    comment:undefined
-  };
+  this.myRating = undefined;
   this.star = new Star("filled");
   this.restaurantName = restaurant.restaurantName;
   this.position = {lat: restaurant.lat, lng: restaurant.long};
@@ -33,14 +33,10 @@ Restaurant.prototype.createNode = function() {
 
 Restaurant.prototype.createRatingNode = function(value, comment) {
   var container= document.createElement("div");
+  container.classList="rate";
   var star = new Star("filled");
   star.setValue(value);
-
-  var separator = document.createElement("div");
-  separator.style.marginTop ="20px";
-  separator.style.width = "40%"
-  separator.classList = "separator";
-  container.appendChild(separator);
+  star.node.style.paddingTop ="30px";
 
   container.appendChild(star.node);
   var commentNode= document.createElement("p");
@@ -78,56 +74,64 @@ Restaurant.prototype.createInfoNode = function(){
 }
 
 Restaurant.prototype.createTitleNode = function (name) {
-
   var container= document.createElement("div");
   var titleNode = document.createElement("h3");
   titleNode.textContent=name;
   var button = document.createElement("button");
-  button.textContent = "Ajouter un avis";
+  button.id = "add-rating";
+
+  if(this.rated) button.textContent = "Modifier mon avis";
+  else button.textContent = "Ajouter un avis";
+
   button.setAttribute("data-toggle","modal");
   button.setAttribute("data-target","#exampleModal");
   button.classList.add("btn");
   button.classList.add("btn-primary");
-  var body = document.getElementById("modal-body");
+  this.putRatingDialog();
+  container.appendChild(titleNode);
+  container.appendChild(button);
+  return container;
+};
 
+Restaurant.prototype.putRatingDialog = function(){
+  var body = document.getElementById("modal-body");
+  body.textContent ="";
   var minStar = new Star("selected");
   minStar.enableDescriptions(document.getElementById("exampleModalLabel"),["aucun avis","horrible","bof","correct","très bien","parfait"]);
   minStar.setValue(0);
-
   body.appendChild(minStar.node);
-
   var comment = document.createElement("input");
   comment.style.display ="block";
   comment.setAttribute("type","textarea");
   comment.classList = "comment";
   comment.setAttribute("placeholder","Tapez cotre commentaire ici");
   body.appendChild(comment);
-  var context = this;
-  minStar.onUpdate = function(value){
-    var submit = document.getElementById("modal-submit");
-    if(value>0){
-        submit.classList = "btn btn-primary";
-        submit.textContent = "Ajouter un avis";
-        $('#modal-submit').on('click', function () {
-           $(this).parents('form').submit();
-           context.myRating.stars = value;
-           context.myRating.comment = "comment";
-           console.log("onSubmitAvis for value:"+context.myRating.stars+", comment:"+context.myRating.comment);
-        });
-    }
-  };
+  minStar.onUpdate = this.setRating;
 
-  container.appendChild(titleNode);
-  container.appendChild(button);
-  return container;
-};
+  var context = this;
+  var submit = document.getElementById("modal-submit");
+  submit.addEventListener("click", function(){
+    if(minStar.value>0) {
+      context.ratings.unshift({stars:minStar.value,comment:comment.value});
+      context.rated = true;
+      context.refresh(context);
+    }
+  });
+},
+
+Restaurant.prototype.setRating = function(value){
+
+  var submit = document.getElementById("modal-submit");
+  if(value>0){
+    submit.classList = "btn btn-primary";
+    submit.textContent = "Ajouter un avis";
+  }
+},
 
 Restaurant.prototype.onSelected = function() {
   console.log("Restaurant : "+this.restaurantName+" selected");
   //displayRestaurantDesc();
 },
-
-
 
 Restaurant.prototype.getRatingAverage = function() {
   var total=0;
@@ -157,7 +161,7 @@ Restaurant.prototype.displayRestaurantDesc = function(){
   var p= document.createElement("p");
   p.textContent = this.restaurantName;
   var list = document.getElementById('restaurant-list');
-  list.textContent ="1234567";
+  list.textContent ="";
 },
 
 Restaurant.prototype.isVisible = function () {

@@ -63,6 +63,7 @@ function createRestaurantMarker(restaurant){
 function displayInfoRestaurant(restaurant){
   list.textContent ="";
   description.textContent = "";
+  restaurant.refresh = displayInfoRestaurant;
   description.appendChild(restaurant.createStreetViewNode());
   ActionBar.set(restaurant.restaurantName,showRestaurants);
   list.appendChild(restaurant.createInfoNode());
