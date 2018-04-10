@@ -99,8 +99,9 @@ Restaurant.prototype.createTitleNode = function (name) {
 
   var comment = document.createElement("input");
   comment.style.display ="block";
-  comment.setAttribute("type","text");
-  comment.setAttribute("placeholder","tapez cotre commentaire");
+  comment.setAttribute("type","textarea");
+  comment.classList = "comment";
+  comment.setAttribute("placeholder","Tapez cotre commentaire ici");
   body.appendChild(comment);
 
   container.appendChild(titleNode);

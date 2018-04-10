@@ -16,6 +16,14 @@ body {
   background: #555;
 }
 
+.comment{
+  width:100%;
+  height: auto;
+  padding: 16px 16px 16px 16px;
+  margin: 16px 16px 16px 16px;
+  border: none;
+}
+
 nav {
   box-shadow: 1px 1px 1px grey;
   position: fixed;
