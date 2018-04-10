@@ -1,5 +1,5 @@
 var mode = "near";
-
+var myName= undefined;
 $('#myModal').on('shown.bs.modal', function () {
   $('#myInput').trigger('focus')
 });
@@ -47,7 +47,7 @@ window.addEventListener("resize", setRestaurantListDimension);
 window.addEventListener("load", setRestaurantListDimension);
 
 function displayMap(lat,lng){
-  
+
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 10,
     center: {lat: lat, lng: lng}

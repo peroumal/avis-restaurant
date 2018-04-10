@@ -3,6 +3,11 @@ function Restaurant(restaurant){
   this.long = restaurant.long;
   this.address = restaurant.address;
   this.ratings = restaurant.ratings;
+  this.myRating = {
+    stars:0,
+    comment:null,
+    name:myName
+  };
   this.star = new Star("filled");
   this.restaurantName = restaurant.restaurantName;
   this.position = {lat: restaurant.lat, lng: restaurant.long};
@@ -93,11 +98,12 @@ Restaurant.prototype.createTitleNode = function (name) {
 
   body.appendChild(minStar.node);
 
-  var username = document.createElement("input");
-  username.setAttribute("type","text");
-  username.classList = "username";
-  username.setAttribute("placeholder","indiquez votre nom");
-  body.appendChild(username);
+  this.username = document.createElement("input");
+  this.username.setAttribute("type","text");
+  if(myName) this.username.textContent = myName;
+  this.username.classList = "username";
+  this.username.setAttribute("placeholder","indiquez votre nom");
+  body.appendChild(this.username);
 
   var comment = document.createElement("input");
   comment.style.display ="block";
@@ -105,30 +111,28 @@ Restaurant.prototype.createTitleNode = function (name) {
   comment.classList = "comment";
   comment.setAttribute("placeholder","Tapez cotre commentaire ici");
   body.appendChild(comment);
-
+  var context = this;
   minStar.onUpdate = function(value){
     var submit = document.getElementById("modal-submit");
-    if(minStar.value>0){
-        submit.classList = "btn btn-primary"
-        submit.textContent = "Ajouter un avis"
-    }else{
-      submit.classList = "btn btn-secondary"
-      submit.textContent = "Annuler"
-      return;
+    if(value>0){
+        submit.classList = "btn btn-primary";
+        submit.textContent = "Ajouter un avis";
+        $('#modal-submit').on('click', function () {
+           $(this).parents('form').submit();
+           context.myRating.stars = value;
+           context.myRating.comment = "comment";
+           myName = context.username.textContent;
+           context.myRating.name = myName;
+           console.log("onSubmitAvis for value:"+context.myRating.stars+", comment:"+context.myRating.comment+", name:"+context.myRating.name);
+
+        });
     }
-    var context = this;
-    submit.addEventListener("click",function(value){
-        console.console.log("onClick-Avis:value"+value);
-        //context.ratings.push();
-    });
   };
 
   container.appendChild(titleNode);
   container.appendChild(button);
   return container;
 };
-
-
 
 Restaurant.prototype.onSelected = function() {
   console.log("Restaurant : "+this.restaurantName+" selected");
