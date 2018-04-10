@@ -94,6 +94,7 @@ Restaurant.prototype.createTitleNode = function (name) {
 
   var username = document.createElement("input");
   username.setAttribute("type","text");
+  username.classList = "username";
   username.setAttribute("placeholder","indiquez votre nom");
   body.appendChild(username);
 

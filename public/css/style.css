@@ -19,8 +19,15 @@ body {
 .comment{
   width:100%;
   height: auto;
+  font-size: 1.2em;
   padding: 16px 16px 16px 16px;
   margin: 16px 16px 16px 16px;
+  border: none;
+}
+
+.username{
+  height: auto;
+  margin-left: 20px;
   border: none;
 }
 
