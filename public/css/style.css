@@ -28,6 +28,7 @@ body {
 .username{
   height: auto;
   margin-left: 20px;
+  text-size:1em;
   border: none;
 }
 

@@ -5,8 +5,7 @@ function Restaurant(restaurant){
   this.ratings = restaurant.ratings;
   this.myRating = {
     stars:0,
-    comment:null,
-    name:myName
+    comment:undefined
   };
   this.star = new Star("filled");
   this.restaurantName = restaurant.restaurantName;
@@ -32,12 +31,8 @@ Restaurant.prototype.createNode = function() {
   return this.node;
 },
 
-Restaurant.prototype.createRatingNode = function(name, value, comment) {
+Restaurant.prototype.createRatingNode = function(value, comment) {
   var container= document.createElement("div");
-
-  var nameNode= document.createElement("b");
-  nameNode.textContent = name;
-  container.appendChild(nameNode);
 
   var star = new Star("filled");
   star.setValue(value);
@@ -72,9 +67,7 @@ Restaurant.prototype.createInfoNode = function(){
   var container= document.createElement("div");
   container.appendChild(this.createTitleNode("Avis"));
   this.ratings.forEach(function(rate){
-    var name = rate.name;
-    if (name == undefined || name== null) name="Anonyme";
-    container.appendChild(restaurant.createRatingNode(name,rate.stars,rate.comment));
+    container.appendChild(restaurant.createRatingNode(rate.stars,rate.comment));
   });
   return container;
 }
@@ -98,13 +91,6 @@ Restaurant.prototype.createTitleNode = function (name) {
 
   body.appendChild(minStar.node);
 
-  this.username = document.createElement("input");
-  this.username.setAttribute("type","text");
-  if(myName) this.username.textContent = myName;
-  this.username.classList = "username";
-  this.username.setAttribute("placeholder","indiquez votre nom");
-  body.appendChild(this.username);
-
   var comment = document.createElement("input");
   comment.style.display ="block";
   comment.setAttribute("type","textarea");
@@ -121,10 +107,7 @@ Restaurant.prototype.createTitleNode = function (name) {
            $(this).parents('form').submit();
            context.myRating.stars = value;
            context.myRating.comment = "comment";
-           myName = context.username.textContent;
-           context.myRating.name = myName;
-           console.log("onSubmitAvis for value:"+context.myRating.stars+", comment:"+context.myRating.comment+", name:"+context.myRating.name);
-
+           console.log("onSubmitAvis for value:"+context.myRating.stars+", comment:"+context.myRating.comment);
         });
     }
   };
