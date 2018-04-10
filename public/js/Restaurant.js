@@ -85,6 +85,12 @@ Restaurant.prototype.createTitleNode = function (name) {
   button.setAttribute("data-target","#exampleModal");
   button.classList.add("btn");
   button.classList.add("btn-primary");
+  var body = document.getElementById("modal-body");
+
+  var minStar = new Star("selected");
+  minStar.enableDescriptions(document.getElementById("exampleModalLabel"),["aucun avis","horrible","bof","correct","très bien","parfait"]);
+  minStar.setValue(0);
+  body.appendChild(minStar.node);
   container.appendChild(titleNode);
   container.appendChild(button);
   return container;

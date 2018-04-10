@@ -1,7 +1,7 @@
 
 class Star{
 
-  constructor(checked){
+  constructor(checked,descriptions,id){
     this.stars = [];
     this.value=0;
     this.onUpdate=null;
@@ -12,30 +12,48 @@ class Star{
       img.classList = "star";
       this.stars.push(img);
       this.node.appendChild(img);
-      if (this.checked=="selected") this.onSelected(img)
+      if (this.checked=="selected") this.listenSelectionEvent(img)
     }
   }
 
-  onSelected(img) {
-    var pos = this.stars.indexOf(img)+1;
-    var context = this;
+  enableDescriptions(node, descriptions){
+    this.hasDescription= true;
+    this.descriptionNode = node;
+    this.descriptions = descriptions;
+  }
 
+  listenSelectionEvent(img) {
+    var context = this;
     img.addEventListener("mouseenter",function(e){
+      var pos = context.stars.indexOf(img)+1;
       for (var i=0;i<pos;i++) context.stars[i].setAttribute("src","assets/pic/star-onselected.svg");
       for (var j=pos;j<context.stars.length;j++) context.stars[j].setAttribute("src","assets/pic/star-unselected.svg");
+      if(context.value == pos) context.check(pos);
+      if(context.hasDescription) context.descriptionNode.textContent = context.descriptions[pos];
+      context.onChange();
     });
-
     img.addEventListener("mouseout",function(e){
         if(e.relatedTarget.classList == "star") console.log("continue");
         else context.setValue(context.value);
+        context.onChange();
     });
-
     img.addEventListener("click",function(e){
+      var pos = context.stars.indexOf(img)+1;
       context.setValue(pos);
     });
   }
 
+  onChange(){
+
+  }
+
   setValue (value) {
+    this.check(value);
+    if(this.hasDescription) this.descriptionNode.textContent = this.descriptions[value];
+    if(this.onUpdate!=undefined && this.onUpdate!=null) this.onUpdate(value);
+  }
+
+  check(value){
     var pos=0;
     this.value = value;
     console.log("onSetStar:"+value+"checked="+this.checked);
@@ -45,6 +63,5 @@ class Star{
       if(++pos > value) name = "un"+status;
       star.setAttribute("src","assets/pic/star-"+name+".svg");
     });
-    if(this.onUpdate!=undefined && this.onUpdate!=null) this.onUpdate();
   }
 }
