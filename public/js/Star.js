@@ -7,6 +7,7 @@ class Star{
     this.onUpdate=null;
     this.checked = checked;
     this.node = document.createElement("a");
+    this.node.style.width = "auto";
     for(var i=0;i<5;i++){
       var img = document.createElement("img");
       img.classList = "star";

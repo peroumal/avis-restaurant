@@ -33,11 +33,16 @@ Restaurant.prototype.createNode = function() {
 
 Restaurant.prototype.createRatingNode = function(value, comment) {
   var container= document.createElement("div");
-
   var star = new Star("filled");
   star.setValue(value);
-  container.appendChild(star.node);
 
+  var separator = document.createElement("div");
+  separator.style.marginTop ="20px";
+  separator.style.width = "40%"
+  separator.classList = "separator";
+  container.appendChild(separator);
+
+  container.appendChild(star.node);
   var commentNode= document.createElement("p");
   commentNode.textContent = comment;
   container.appendChild(commentNode);

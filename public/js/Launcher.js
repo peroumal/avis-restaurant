@@ -1,5 +1,4 @@
 var mode = "near";
-var myName= undefined;
 $('#myModal').on('shown.bs.modal', function () {
   $('#myInput').trigger('focus')
 });
