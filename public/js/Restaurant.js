@@ -91,6 +91,11 @@ Restaurant.prototype.createTitleNode = function (name) {
   minStar.enableDescriptions(document.getElementById("exampleModalLabel"),["aucun avis","horrible","bof","correct","très bien","parfait"]);
   minStar.setValue(0);
   body.appendChild(minStar.node);
+
+  var comment = document.createElement("input");
+  comment.setAttribute("type","text");
+  comment.setAttribute("placeholder","tapez cotre commentaire");
+  body.appendChild(comment);
   container.appendChild(titleNode);
   container.appendChild(button);
   return container;
