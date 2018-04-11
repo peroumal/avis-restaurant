@@ -13,14 +13,17 @@ var ActionBar = {
     if(title != null){
       this.get("title").textContent = title;
       this.get("icon").setAttribute("src","assets/pic/back.svg");
-      ActionBar.get("icon").addEventListener("click",function _func(e){
-          if(back!=undefined && back!=null) back();
-          e.target.setAttribute("src","assets/pic/search.svg");
-          e.target.removeEventListener("click",_func);
-      });
+      this.get("icon").addEventListener("click",back);
+    }else {
+      this.get("icon").addEventListener("click",this.hideNavigation);
     }
   },
-  hideNavigation:function(){
-    
+hideNavigation:function(e){
+  if(ActionBar.title==null){
+    var node = ActionBar.get("bar").parentNode;
+    node.style.left = (0-getDimensions(node)[1])+"px";
+    e.target.setAttribute("src","assets/pic/search.svg");
+    e.target.removeEventListener("click",this);
   }
+}
 };
