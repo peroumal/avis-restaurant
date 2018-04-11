@@ -139,7 +139,6 @@ Restaurant.prototype.setRating = function(value){
 
 Restaurant.prototype.onSelected = function() {
   console.log("Restaurant : "+this.restaurantName+" selected");
-  //displayRestaurantDesc();
 },
 
 Restaurant.prototype.getRatingAverage = function() {
@@ -151,7 +150,6 @@ Restaurant.prototype.getRatingAverage = function() {
   });
   if(nb===0) return undefined;
   return (total/nb);
-  //displayRestaurantDesc();
 },
 
 Restaurant.prototype.appendsRatings = function() {
@@ -164,13 +162,6 @@ Restaurant.prototype.appendsRatings = function() {
     var rate = document.createElement()
   });
   this.node.appendChild();
-},
-
-Restaurant.prototype.displayRestaurantDesc = function(){
-  var p= document.createElement("p");
-  p.textContent = this.restaurantName;
-  var list = document.getElementById('restaurant-list');
-  list.textContent ="";
 },
 
 Restaurant.prototype.isVisible = function () {
