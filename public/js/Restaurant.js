@@ -87,9 +87,12 @@ Restaurant.prototype.createTitleNode = function (name) {
   button.setAttribute("data-target","#exampleModal");
   button.classList.add("btn");
   button.classList.add("btn-primary");
-  this.putRatingDialog();
+  var context = this;
   container.appendChild(titleNode);
   container.appendChild(button);
+  button.addEventListener('click',function(e){
+    context.putRatingDialog();
+  });
   return container;
 };
 
@@ -115,6 +118,7 @@ Restaurant.prototype.putRatingDialog = function(){
   var context = this;
   var submit = document.getElementById("modal-submit");
   submit.addEventListener("click", function(){
+
     if(minStar.value>0) {
       var elem = {stars:minStar.value,comment:comment.value};
       if (context.rated) context.ratings[0] = elem;
@@ -126,7 +130,6 @@ Restaurant.prototype.putRatingDialog = function(){
 },
 
 Restaurant.prototype.setRating = function(value){
-
   var submit = document.getElementById("modal-submit");
   if(value>0){
     submit.classList = "btn btn-primary";

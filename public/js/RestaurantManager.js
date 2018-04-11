@@ -69,6 +69,25 @@ function displayInfoRestaurant(restaurant){
   list.appendChild(restaurant.createInfoNode());
 }
 
+function addRestaurant(lat,long){
+  var body = document.getElementById("modal-body");
+  body.textContent ="";
+  var label = document.getElementById("exampleModalLabel");
+  label.textContent = "Ajout d'un restaurant";
+
+  var comment = document.createElement("input");
+  comment.style.display ="block";
+  comment.setAttribute("type","textarea");
+  if(this.rated) comment.value = this.ratings[0].comment;
+  comment.classList = "comment";
+  comment.setAttribute("placeholder","Nom du nouveau restaurant");
+  body.appendChild(comment);
+
+
+  $('#exampleModal').modal('toggle');
+  $('#exampleModal').modal('show');
+}
+
 function isVisible(marker){
   return map.getBounds().contains(marker.getPosition());
 }

@@ -17,7 +17,6 @@ $.ajax({
     }
 });
 
-
 function setRestaurantListDimension(){
   var actionBarHeight = window.getComputedStyle(
     document.getElementById("action-bar"))
@@ -54,6 +53,10 @@ function displayMap(lat,lng){
 
   google.maps.event.addListener(map, 'bounds_changed', function() {
       if(mode == "near") showRestaurants();
+  });
+
+  map.addListener('click', function(e) {
+      addRestaurant(e.latLng.lat, e.latLng.lng);
   });
 }
 
