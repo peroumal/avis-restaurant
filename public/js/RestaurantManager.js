@@ -21,7 +21,6 @@ function showRestaurants(){
 
   minStar.onUpdate = showRestaurants;
   maxStar.onUpdate = showRestaurants;
-  //var filter = new Filter();
     description.textContent = "";
     description.appendChild(getFilterNode());
     list.textContent = "";
@@ -71,20 +70,26 @@ function displayInfoRestaurant(restaurant){
   list.appendChild(restaurant.createInfoNode());
 }
 
-function addRestaurant(lat,long){
-  var body = document.getElementById("modal-body");
-  body.textContent ="";
+function insertInputField(container,title,placeholder){
   var label = document.getElementById("exampleModalLabel");
   label.textContent = "Ajout d'un restaurant";
 
+  var label = document.createElement("label");
+  label.textContent = "Nom du restaurant";
   var comment = document.createElement("input");
   comment.style.display ="block";
   comment.setAttribute("type","text");
-  comment.classList = "comment";
+  comment.classList = "input-text";
   comment.setAttribute("placeholder","Nom du restaurant");
+  container.appendChild(label);
+  container.appendChild(comment);
+  return comment;
+}
 
-  body.appendChild(comment);
-
+function addRestaurant(lat,long){
+  var body = document.getElementById("modal-body");
+  body.textContent ="";
+  var comment = this.insertInputField(body);
   var address = document.createElement("input");
   address.style.display ="block";
   address.classList = "address";

@@ -24,6 +24,13 @@ body {
   border: none;
 }
 
+.input-text{
+  margin-top: -8px;
+  margin-bottom: 16px;
+  font-size: 1.2em;
+  border: none;
+}
+
 .address{
   width:80%;
   height: auto;
