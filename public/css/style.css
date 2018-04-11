@@ -31,6 +31,10 @@ body {
   border: none;
 }
 
+.input-label{
+  font-size: 0.75em;
+}
+
 .address{
   width:80%;
   height: auto;
