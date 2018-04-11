@@ -17,16 +17,17 @@ $.ajax({
     }
 });
 
-function setRestaurantListDimension(){
-  var actionBarHeight = window.getComputedStyle(
-    document.getElementById("action-bar"))
-    .getPropertyValue("height")
-    .split("px")[0];
+function getDimensions(node){
+  var style = window.getComputedStyle(node);
+    var height = style.getPropertyValue("height").split("px")[0];
+    var width = style.getPropertyValue("width").split("px")[0];
+    return [height,width];
+}
 
-    var actionBarWidth = window.getComputedStyle(
-      document.getElementById("action-bar"))
-      .getPropertyValue("width")
-      .split("px")[0];
+function setRestaurantListDimension(){
+  var dimen = getDimensions(document.getElementById("action-bar"));
+  var actionBarHeight = dimen[0];
+  var actionBarWidth = dimen[1]
 
   var ah = (window.innerHeight-actionBarHeight);
   if(actionBarWidth*2>=window.innerWidth){
