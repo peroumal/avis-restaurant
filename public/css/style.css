@@ -24,6 +24,16 @@ body {
   border: none;
 }
 
+.address{
+  width:80%;
+  height: auto;
+  font-size: 1em;
+  margin-left: 10%;
+  margin-right: 10%;
+  padding: 8px 8px 8px 8px;
+  border: bottom;
+}
+
 .username{
   height: auto;
   margin-left: 20px;
