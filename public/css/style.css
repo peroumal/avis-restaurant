@@ -16,18 +16,12 @@ body {
   background: #555;
 }
 
-.comment{
-  width:100%;
-  height: auto;
-  font-size: 1.2em;
-  padding: 16px 16px 16px 16px;
-  border: none;
-}
-
 .input-text{
-  margin-top: -8px;
+  margin-top: -6px;
   margin-bottom: 16px;
   width: 100%;
+  color: black;
+  caret-color: #283593;
   font-size: 1.2em;
   border: none;
 }
@@ -97,15 +91,21 @@ nav {
 
 #action-bar{
   background: #283593;
+
 }
 
 #action-icon{
   display: inline-block;
-  padding: 16px 16px 16px 16px;
+  padding: 8px 8px 8px 8px;
 }
 
 #action-title{
-  color: #eeeeee;
+  color: #151515;
+  display: inline-block;
+  width:85%;
+  padding-left: 8px;
+  color: white;
+
 }
 
 #description {

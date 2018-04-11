@@ -8,7 +8,8 @@ var ActionBar = {
   set: function(title,back){
       this.title = title;
       this.back = back;
-      this.get("title").textContent = "Liste des restaurants";
+      this.get("title").textContent = "";
+      insertInputField(this.get("title"),"trouver un restaurant","Ma recherche");
       this.get("icon").setAttribute("src","assets/pic/back.svg");
       this.get("icon").onclick = this.hideNavigation;
     if(title != null && back!=null){
