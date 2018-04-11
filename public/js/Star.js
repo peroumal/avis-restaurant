@@ -1,7 +1,7 @@
 
 class Star{
 
-  constructor(checked,descriptions,id){
+  constructor(checked,size){
     this.stars = [];
     this.value=0;
     this.onUpdate=null;
@@ -12,6 +12,10 @@ class Star{
       var img = document.createElement("img");
       img.classList = "star";
       this.stars.push(img);
+      if(size) {
+        img.style.height=size;
+        img.style.width = size;
+      }
       this.node.appendChild(img);
       if (this.checked=="selected") this.listenSelectionEvent(img)
     }

@@ -96,23 +96,29 @@ Restaurant.prototype.createTitleNode = function (name) {
 Restaurant.prototype.putRatingDialog = function(){
   var body = document.getElementById("modal-body");
   body.textContent ="";
-  var minStar = new Star("selected");
+
+  var minStar = new Star("selected","48px");
   minStar.enableDescriptions(document.getElementById("exampleModalLabel"),["aucun avis","horrible","bof","correct","très bien","parfait"]);
-  minStar.setValue(0);
+  minStar.onUpdate = this.setRating;
+  if(this.rated) minStar.setValue(this.ratings[0].stars);
+  else    minStar.setValue(0);
   body.appendChild(minStar.node);
+
   var comment = document.createElement("input");
   comment.style.display ="block";
   comment.setAttribute("type","textarea");
+  if(this.rated) comment.value = this.ratings[0].comment;
   comment.classList = "comment";
   comment.setAttribute("placeholder","Tapez cotre commentaire ici");
   body.appendChild(comment);
-  minStar.onUpdate = this.setRating;
 
   var context = this;
   var submit = document.getElementById("modal-submit");
   submit.addEventListener("click", function(){
     if(minStar.value>0) {
-      context.ratings.unshift({stars:minStar.value,comment:comment.value});
+      var elem = {stars:minStar.value,comment:comment.value};
+      if (context.rated) context.ratings[0] = elem;
+      else context.ratings.unshift(elem);
       context.rated = true;
       context.refresh(context);
     }
@@ -124,7 +130,7 @@ Restaurant.prototype.setRating = function(value){
   var submit = document.getElementById("modal-submit");
   if(value>0){
     submit.classList = "btn btn-primary";
-    submit.textContent = "Ajouter un avis";
+    submit.textContent = "Confirmer l'avis";
   }
 },
 
