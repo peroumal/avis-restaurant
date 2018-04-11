@@ -117,8 +117,7 @@ Restaurant.prototype.putRatingDialog = function(){
 
   var context = this;
   var submit = document.getElementById("modal-submit");
-  submit.addEventListener("click", function(){
-
+  submit.onclick = function(){
     if(minStar.value>0) {
       var elem = {stars:minStar.value,comment:comment.value};
       if (context.rated) context.ratings[0] = elem;
@@ -126,7 +125,7 @@ Restaurant.prototype.putRatingDialog = function(){
       context.rated = true;
       context.refresh(context);
     }
-  });
+  };
 },
 
 Restaurant.prototype.setRating = function(value){

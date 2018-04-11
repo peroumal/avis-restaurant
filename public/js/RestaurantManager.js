@@ -83,6 +83,22 @@ function addRestaurant(lat,long){
   comment.setAttribute("placeholder","Nom du nouveau restaurant");
   body.appendChild(comment);
 
+  var submit = document.getElementById("modal-submit");
+  var context = this;
+  var data = {
+    restaurantName:"nulllll",
+    address:"4 Rue Lamarck, 75018 Paris",
+    lat:lat,
+    long:long,
+    ratings:[]
+  }
+  submit.onclick = function(){
+    var rest = new Restaurant(data);
+    restaurants.push(rest);
+    context.displayInfoRestaurant(rest);
+    submit.onclick=null;
+  };
+
 
   $('#exampleModal').modal('toggle');
   $('#exampleModal').modal('show');
