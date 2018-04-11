@@ -97,6 +97,8 @@ Restaurant.prototype.createTitleNode = function (name) {
 };
 
 Restaurant.prototype.putRatingDialog = function(){
+
+
   var body = document.getElementById("modal-body");
   body.textContent ="";
 
@@ -117,6 +119,8 @@ Restaurant.prototype.putRatingDialog = function(){
 
   var context = this;
   var submit = document.getElementById("modal-submit");
+  submit.classList = "btn btn-secondary";
+  submit.textContent = "Annuler";
   submit.onclick = function(){
     if(minStar.value>0) {
       var elem = {stars:minStar.value,comment:comment.value};

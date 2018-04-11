@@ -82,6 +82,9 @@ function addRestaurant(lat,long){
   comment.setAttribute("type","text");
   comment.classList = "comment";
   comment.setAttribute("placeholder","Nom du restaurant");
+  comment.addEventListener("change",function(){
+
+  });
   body.appendChild(comment);
 
   var address = document.createElement("input");
@@ -90,19 +93,23 @@ function addRestaurant(lat,long){
   address.setAttribute("placeholder","Addresse du retaurant");
   body.appendChild(address);
   var submit = document.getElementById("modal-submit");
+  submit.classList = "btn btn-primary";
   submit.textContent = "confirmer l'ajout";
+
   submit.onclick = function(){
-    var data = {
-      restaurantName:comment.value,
-      address:address.value,
-      lat:lat,
-      long:long,
-      ratings:[]
+    if(comment.value.length>0){
+      var data = {
+        restaurantName:comment.value,
+        address:address.value,
+        lat:lat,
+        long:long,
+        ratings:[]
+      }
+      var rest = new Restaurant(data);
+      restaurants.push(rest);
+      createRestaurantMarker(rest);
+      displayInfoRestaurant(rest);
     }
-    var rest = new Restaurant(data);
-    restaurants.push(rest);
-    createRestaurantMarker(rest);
-    displayInfoRestaurant(rest);
     submit.onclick=null;
   };
 
