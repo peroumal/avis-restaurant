@@ -71,9 +71,6 @@ function displayInfoRestaurant(restaurant){
 }
 
 function insertInputField(container,title,placeholder){
-  var label = document.getElementById("exampleModalLabel");
-  label.textContent = "Ajout d'un restaurant";
-
   var label = document.createElement("label");
   label.textContent = "Nom du restaurant";
   var comment = document.createElement("input");
@@ -87,6 +84,8 @@ function insertInputField(container,title,placeholder){
 }
 
 function addRestaurant(lat,long){
+  var label = document.getElementById("exampleModalLabel");
+  label.textContent = "Ajout d'un restaurant";
   var body = document.getElementById("modal-body");
   body.textContent ="";
   var comment = this.insertInputField(body);
