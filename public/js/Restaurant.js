@@ -109,13 +109,8 @@ Restaurant.prototype.putRatingDialog = function(){
   else    minStar.setValue(0);
   body.appendChild(minStar.node);
 
-  var comment = document.createElement("input");
-  comment.style.display ="block";
-  comment.setAttribute("type","textarea");
+  var comment = insertInputField(body,"Donnez un avis (facultatif)","mon super commentaire");
   if(this.rated) comment.value = this.ratings[0].comment;
-  comment.classList = "comment";
-  comment.setAttribute("placeholder","Tapez cotre commentaire ici");
-  body.appendChild(comment);
 
   var context = this;
   var submit = document.getElementById("modal-submit");

@@ -70,19 +70,6 @@ function displayInfoRestaurant(restaurant){
   list.appendChild(restaurant.createInfoNode());
 }
 
-function insertInputField(container,title,placeholder){
-  var label = document.createElement("label");
-  label.textContent = title;
-  label.classList = "input-label";
-  var comment = document.createElement("input");
-  comment.style.display ="block";
-  comment.setAttribute("type","text");
-  comment.classList = "input-text";
-  comment.setAttribute("placeholder",placeholder);
-  container.appendChild(label);
-  container.appendChild(comment);
-  return comment;
-}
 
 function addRestaurant(lat,long){
   var label = document.getElementById("exampleModalLabel");
