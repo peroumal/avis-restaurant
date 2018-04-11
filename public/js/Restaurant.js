@@ -152,7 +152,7 @@ Restaurant.prototype.getRatingAverage = function() {
     total += e.stars;
   });
   if(nb===0) return undefined;
-  return (total/nb);
+  return Math.round(total/nb);
 },
 
 Restaurant.prototype.appendsRatings = function() {
