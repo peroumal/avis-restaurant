@@ -56,7 +56,9 @@ function displayMap(lat,lng){
   });
 
   map.addListener('click', function(e) {
-      addRestaurant(e.latLng.lat, e.latLng.lng);
+    var pos = e.latLng;
+      console.log(pos);
+      addRestaurant(pos.lat(), pos.lng());
   });
 }
 

@@ -43,6 +43,8 @@ function appendRestaurant(restaurant){
 }
 
 function createRestaurantMarker(restaurant){
+
+  //alert("rest:"+restaurant.restaurantName+" {lat:"+restaurant.lat+", lon:"+restaurant.long+"}");
   restaurant.marker = new google.maps.Marker({
     position: restaurant.position,
     map: map,
@@ -77,17 +79,23 @@ function addRestaurant(lat,long){
 
   var comment = document.createElement("input");
   comment.style.display ="block";
-  comment.setAttribute("type","textarea");
-  if(this.rated) comment.value = this.ratings[0].comment;
+  comment.setAttribute("type","text");
   comment.classList = "comment";
   comment.setAttribute("placeholder","Nom du nouveau restaurant");
   body.appendChild(comment);
 
+  var address = document.createElement("input");
+  address.style.display ="block";
+  comment.classList = "comment";
+  address.setAttribute("textSize","1.1em");
+  address.setAttribute("placeholder","Addresse du retaurant");
+  body.appendChild(address);
+
   var submit = document.getElementById("modal-submit");
   var context = this;
   var data = {
-    restaurantName:"nulllll",
-    address:"4 Rue Lamarck, 75018 Paris",
+    restaurantName:"comment.value",
+    address:address.value,
     lat:lat,
     long:long,
     ratings:[]
@@ -95,7 +103,8 @@ function addRestaurant(lat,long){
   submit.onclick = function(){
     var rest = new Restaurant(data);
     restaurants.push(rest);
-    context.displayInfoRestaurant(rest);
+    createRestaurantMarker(rest);
+    displayInfoRestaurant(rest);
     submit.onclick=null;
   };
 
