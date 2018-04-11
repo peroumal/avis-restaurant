@@ -6,24 +6,25 @@ var ActionBar = {
     return document.getElementById("action-"+name);
   },
   set: function(title,back){
-      if(title) this.title = title;
-      this.back = ActionBar.HOME;
+      this.title = title;
+      this.back = back;
       this.get("title").textContent = "Liste des restaurants";
       this.get("icon").setAttribute("src","assets/pic/back.svg");
-    if(title != null){
+      this.get("icon").onclick = this.hideNavigation;
+    if(title != null && back!=null){
       this.get("title").textContent = title;
       this.get("icon").setAttribute("src","assets/pic/back.svg");
-      this.get("icon").addEventListener("click",back);
-    }else {
-      this.get("icon").addEventListener("click",this.hideNavigation);
+      this.get("icon").onclick = back;
     }
   },
 hideNavigation:function(e){
   if(ActionBar.title==null){
+    ActionBar.get("icon").style.float = "right";
     var node = ActionBar.get("bar").parentNode;
-    node.style.left = (0-getDimensions(node)[1])+"px";
+    node.style.left = (40-getDimensions(node)[1])+"px";
     e.target.setAttribute("src","assets/pic/search.svg");
-    e.target.removeEventListener("click",this);
+    document.getElementById("map").style.left = "40px";
+    document.getElementById("map").style.width = (window.innerWidth)+"px";
   }
 }
 };

@@ -28,7 +28,7 @@ function showRestaurants(){
       var val = restaurant.getRatingAverage();
       if(minStar.value<=val && maxStar.value>=val)showRestaurant(restaurant);
     });
-    ActionBar.set(ActionBar.HOME);
+    ActionBar.set(null,null);
 }
 
 function showRestaurant(restaurant){
