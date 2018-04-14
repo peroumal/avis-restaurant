@@ -26,6 +26,14 @@ hideNavigation:function(e){
     e.target.setAttribute("src","assets/pic/search.svg");
     document.getElementById("map").style.left = "40px";
     document.getElementById("map").style.width = (window.innerWidth)+"px";
+    ActionBar.get("icon").onclick = ActionBar.showNavigation;
   }
+},
+
+showNavigation:function(e){
+    setRestaurantListDimension();
+    alert("show nav called");
+    e.target.setAttribute("src","assets/pic/search.svg");
+    ActionBar.get("icon").onclick = ActionBar.hideNavigation;
 }
 };

@@ -24,26 +24,26 @@ function getDimensions(node){
     return [height,width];
 }
 
-function setRestaurantListDimension(){
+function showMapFrom(left){
+    document.getElementById("map").style.left = left+"px";
+    document.getElementById("map").style.width = (window.innerWidth-left)+"px";
+}
+
+function setAdaptativeDimensions(){
   var dimen = getDimensions(document.getElementById("action-bar"));
   var actionBarHeight = dimen[0];
   var actionBarWidth = dimen[1]
 
-  var ah = (window.innerHeight-actionBarHeight);
-  if(actionBarWidth*2>=window.innerWidth){
-    document.getElementById("map").style.left = "0px";
-    document.getElementById("map").style.width = (window.innerWidth)+"px";
-  }else {
-    document.getElementById("map").style.left = actionBarWidth+"px";
-    document.getElementById("map").style.width = (window.innerWidth-actionBarWidth)+"px";
-    document.getElementsByTagName("nav")[0].style.height = "100%";
-  }
-  document.getElementById("restaurant-list").style.height = ah+"px";
-  document.getElementById("map").style.height = (window.innerHeight)+"px";
+  if(actionBarWidth*2>=window.innerWidth) showMapFrom(0);
+  else showMapFrom(actionBarWidth);
+
+  document.getElementById("restaurant-list").style.height = (window.innerHeight-actionBarHeight)+"px";
+  //  var height = Math.max(html., html.offsetHeight);
+  document.getElementById("map").style.height = document.documentElement.scrollHeight+"px";
 }
 
-window.addEventListener("resize", setRestaurantListDimension);
-window.addEventListener("load", setRestaurantListDimension);
+window.addEventListener("resize", setAdaptativeDimensions);
+window.addEventListener("load", setAdaptativeDimensions);
 
 function displayMap(lat,lng){
 
