@@ -11,7 +11,7 @@ var ActionBar = {
       this.get("title").textContent = "";
       insertInputField(this.get("title"),"trouver un restaurant","Ma recherche");
       this.get("icon").setAttribute("src","assets/pic/back.svg");
-      this.get("icon").onclick=this.hide;
+      this.get("icon").onclick=this.onDisplayNavigation;
     if(title != null && back!=null){
       this.show();
       this.get("title").textContent = title;
@@ -20,12 +20,14 @@ var ActionBar = {
     }
   },
 
-hide:function(e){
-  ActionBar.get("icon").onclick = ActionBar.show;
-  if(ActionBar.get("icon").style.float == "right"){
-     ActionBar.show();
-     return;
-  }
+  onDisplayNavigation:function(e){
+    if(ActionBar.isExpanded)
+       ActionBar.hide();
+    else ActionBar.show();
+    ActionBar.isExpanded=!ActionBar.isExpanded;
+  },
+
+  hide:function(){
   ActionBar.get("icon").style.float = "right";
   var node = ActionBar.get("bar").parentNode;
   node.style.left = (40-getDimensions(node)[1])+"px";
@@ -33,12 +35,11 @@ hide:function(e){
   showMapFrom(40);
 },
 
-show:function(e){
+  show:function(){
   var node = ActionBar.get("bar").parentNode;
   ActionBar.get("icon").style.float = "left";
   node.style.left = "0px";
   setAdaptativeDimensions();
   //ActionBar.get("icon").setAttribute("src","assets/pic/search.svg");
-  ActionBar.get("icon").onclick = ActionBar.hide;
 }
 };
