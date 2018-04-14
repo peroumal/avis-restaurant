@@ -49,11 +49,8 @@ Restaurant.prototype.createRatingNode = function(value, comment) {
 Restaurant.prototype.createStreetViewNode = function(){
   var container= document.createElement("div");
   var photo = document.createElement("img");
-  photo.style.marginLeft="-10px";
   photo.setAttribute("src",getPhotoUrlAt(this.lat,this.long));
-  photo.setAttribute("alt",this.address);
   photo.setAttribute("title",this.restaurantName);
-  container.appendChild(this.createAddressNode());
   container.appendChild(photo);
   return container;
 },

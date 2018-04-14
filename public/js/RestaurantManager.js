@@ -1,4 +1,4 @@
-
+var headerList = document.getElementById('header-results');
 var list = document.getElementById('results');
 var description = document.getElementById('description');
 var minStar = new Star("selected");
@@ -64,10 +64,13 @@ function createRestaurantMarker(restaurant){
 function displayInfoRestaurant(restaurant){
   list.textContent ="";
   description.textContent = "";
+  headerList.textContent = "";
   restaurant.refresh = displayInfoRestaurant;
-  description.appendChild(restaurant.createStreetViewNode());
+  description.appendChild(restaurant.createAddressNode());
+  headerList.appendChild(restaurant.createStreetViewNode());
   ActionBar.set(restaurant.restaurantName,showRestaurants);
   list.appendChild(restaurant.createInfoNode());
+  setAdaptativeDimensions();
 }
 
 

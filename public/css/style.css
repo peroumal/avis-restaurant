@@ -56,17 +56,18 @@ nav {
   height: 100%;
 }
 
+
 #restaurant-list {
   overflow:scroll;
   width: 300px;
-  padding-left: 20px;
-  padding-right: 10px;
-  opacity: 0.85;
   background: white;
 }
 
 #results {
   padding-top: 20px;
+  padding-left: 20px;
+  height:100%;
+  padding-right: 10px;
 }
 
 #ratings {

@@ -33,9 +33,7 @@ function setAdaptativeDimensions(){
   var dimen = getDimensions(document.getElementById("action-bar"));
   var actionBarHeight = dimen[0];
   var actionBarWidth = dimen[1]
-
-  if(actionBarWidth*2>=window.innerWidth) showMapFrom(0);
-  else showMapFrom(actionBarWidth);
+  showMapFrom(actionBarWidth);
 
   document.getElementById("restaurant-list").style.height = (window.innerHeight-actionBarHeight)+"px";
   document.getElementById("map").style.height = document.documentElement.scrollHeight+"px";
