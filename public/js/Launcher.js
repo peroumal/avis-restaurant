@@ -38,7 +38,6 @@ function setAdaptativeDimensions(){
   else showMapFrom(actionBarWidth);
 
   document.getElementById("restaurant-list").style.height = (window.innerHeight-actionBarHeight)+"px";
-  //  var height = Math.max(html., html.offsetHeight);
   document.getElementById("map").style.height = document.documentElement.scrollHeight+"px";
 }
 

@@ -11,29 +11,34 @@ var ActionBar = {
       this.get("title").textContent = "";
       insertInputField(this.get("title"),"trouver un restaurant","Ma recherche");
       this.get("icon").setAttribute("src","assets/pic/back.svg");
-      this.get("icon").onclick = this.hideNavigation;
+      this.get("icon").onclick=this.hide;
     if(title != null && back!=null){
+      this.show();
       this.get("title").textContent = title;
       this.get("icon").setAttribute("src","assets/pic/back.svg");
       this.get("icon").onclick = back;
     }
   },
-hideNavigation:function(e){
-  if(ActionBar.title==null){
-    ActionBar.get("icon").style.float = "right";
-    var node = ActionBar.get("bar").parentNode;
-    node.style.left = (40-getDimensions(node)[1])+"px";
-    e.target.setAttribute("src","assets/pic/search.svg");
-    document.getElementById("map").style.left = "40px";
-    document.getElementById("map").style.width = (window.innerWidth)+"px";
-    ActionBar.get("icon").onclick = ActionBar.showNavigation;
+
+hide:function(e){
+  ActionBar.get("icon").onclick = ActionBar.show;
+  if(ActionBar.get("icon").style.float == "right"){
+     ActionBar.show();
+     return;
   }
+  ActionBar.get("icon").style.float = "right";
+  var node = ActionBar.get("bar").parentNode;
+  node.style.left = (40-getDimensions(node)[1])+"px";
+  //ActionBar.get("icon").setAttribute("src","assets/pic/search.svg");
+  showMapFrom(40);
 },
 
-showNavigation:function(e){
-    setRestaurantListDimension();
-    alert("show nav called");
-    e.target.setAttribute("src","assets/pic/search.svg");
-    ActionBar.get("icon").onclick = ActionBar.hideNavigation;
+show:function(e){
+  var node = ActionBar.get("bar").parentNode;
+  ActionBar.get("icon").style.float = "left";
+  node.style.left = "0px";
+  setAdaptativeDimensions();
+  //ActionBar.get("icon").setAttribute("src","assets/pic/search.svg");
+  ActionBar.get("icon").onclick = ActionBar.hide;
 }
 };
