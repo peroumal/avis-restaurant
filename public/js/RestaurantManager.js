@@ -29,15 +29,20 @@ function getNearbyRestaurants(callback){
       console.log("results are ok");
       var restaurants = [];
       for (var i = 0; i < results.length; i++) {
-        console.log("result "+i+" = content:",results[i]);
+
         var result = results[i];
-        var info = {
-          restaurantName:result.name,
-          lat: result.geometry.location.lat(),
-          long: result.geometry.location.lng()
-        };
-        //var restaurant = new Restaurant(info);
-      }
+
+        if(!result.types.includes("food") || !result.types.includes("restaurant")) continue;
+          console.log("result "+i+" = content:",result);
+          var info = {
+            restaurantName:result.name,
+            lat: result.geometry.location.lat(),
+            long: result.geometry.location.lng(),
+            address: result.vicinity,
+            ratings: [{stars: result.rating, comment:""}]
+          };
+          var restaurant = new Restaurant(info);
+        }
     } else console.log("results failed");
   });
 }
