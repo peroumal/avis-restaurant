@@ -33,7 +33,8 @@ function getNearbyRestaurants(callback){
         var result = results[i];
         var info = {
           restaurantName:result.name,
-          lat: result.geometry.location.lat()
+          lat: result.geometry.location.lat(),
+          long: result.geometry.location.lng()
         };
         //var restaurant = new Restaurant(info);
       }
