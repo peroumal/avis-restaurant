@@ -22,8 +22,11 @@ function showRestaurants(){
   var request = {
     bounds:map.getBounds()
   }
-  service.nearbySearch(request, function(){
-    console.log("result found");
+  service.nearbySearch(request, function(results,status){
+    if (status == google.maps.places.PlacesServiceStatus.OK) {
+      console.log("results are ok");
+      for (var i = 0; i < results.length; i++) console.log("result "+i+" = content:",results[i]);
+    }
   });
   minStar.onUpdate = showRestaurants;
   maxStar.onUpdate = showRestaurants;
