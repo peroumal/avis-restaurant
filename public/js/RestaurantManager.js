@@ -18,10 +18,12 @@ function getFilterNode(){
 };
 
 function getNearbyRestaurants(callback){
+  console.log("getNearbyRestaurants called");
   var service = new google.maps.places.PlacesService(map);
   var request = {
     bounds:map.getBounds()
   }
+  console.log("params generated");
   service.nearbySearch(request, function(results,status){
     if (status == google.maps.places.PlacesServiceStatus.OK) {
       console.log("results are ok");
@@ -31,11 +33,11 @@ function getNearbyRestaurants(callback){
         var result = results[i];
         var info = {
           restaurantName:result.name,
-          lat: result.geometry.lat()
+          lat: result.geometry.location.lat()
         };
         //var restaurant = new Restaurant(info);
       }
-    }
+    } else console.log("results failed");
   });
 }
 function showRestaurants(){
