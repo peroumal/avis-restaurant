@@ -17,7 +17,7 @@ function getFilterNode(){
     return container;
 };
 
-function showRestaurants(){
+function getNearbyRestaurants(callback){
   var service = new google.maps.places.PlacesService(map);
   var request = {
     bounds:map.getBounds()
@@ -25,9 +25,21 @@ function showRestaurants(){
   service.nearbySearch(request, function(results,status){
     if (status == google.maps.places.PlacesServiceStatus.OK) {
       console.log("results are ok");
-      for (var i = 0; i < results.length; i++) console.log("result "+i+" = content:",results[i]);
+      var restaurants = [];
+      for (var i = 0; i < results.length; i++) {
+        console.log("result "+i+" = content:",results[i]);
+        var result = results[i];
+        var info = {
+          restaurantName:result.name,
+          lat: result.geometry.lat()
+        };
+        //var restaurant = new Restaurant(info);
+      }
     }
   });
+}
+function showRestaurants(){
+
   minStar.onUpdate = showRestaurants;
   maxStar.onUpdate = showRestaurants;
     description.textContent = "";
@@ -38,6 +50,7 @@ function showRestaurants(){
       var val = restaurant.getRatingAverage();
       if(minStar.value<=val && maxStar.value>=val)showRestaurant(restaurant);
     });
+    getNearbyRestaurants();
     ActionBar.set(null,null);
 }
 
