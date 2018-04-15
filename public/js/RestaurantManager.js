@@ -18,7 +18,13 @@ function getFilterNode(){
 };
 
 function showRestaurants(){
-
+  var service = new google.maps.places.PlacesService(map);
+  var request = {
+    bounds:map.getBounds()
+  }
+  service.nearbySearch(request, function(){
+    console.log("result found");
+  });
   minStar.onUpdate = showRestaurants;
   maxStar.onUpdate = showRestaurants;
     description.textContent = "";
