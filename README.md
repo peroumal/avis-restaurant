@@ -8,28 +8,28 @@ Voici un exemple de ce à quoi le fichier MapLoader.js pourrais ressembler :
 
 ``` javascript
 
-// For google maps
+// For google maps first load and init
 $.ajax({
-  url: "https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap",
-  async: true,
-  dataType: "script",
-});
-
-// For google place
-$.ajax({
-    url: "https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places",
+    url: "https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap",
     async: true,
     dataType: "script",
+    success:loadPlaceApi
 });
 
-// For streetview
-function getPhotoUrlAt(lat,lon){
-  var url = "https://maps.googleapis.com/maps/api/streetview?size=300x300&location="
-    +lat
-    +","
-    +lon
-    +"&heading=151.78&pitch=-0.76&key=YOUR_API_KEY";
+// For load Google Place API
+function loadPlaceApi(){
+  $.ajax({
+      url: "https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places",
+      async: true,
+      dataType: "script",
+  });
+}
 
+// For Retrieve picture from streetview API
+function getPhotoUrlAt(lat,lon){
+  var url = "https://maps.googleapis.com/maps/api/streetview?size=300x200&location="+lat+","+lon
+    +"&heading=151.78&pitch=-0.76&key=YOUR_API_KEY";
+    console.log("url",url);
     return url;
 }
 
