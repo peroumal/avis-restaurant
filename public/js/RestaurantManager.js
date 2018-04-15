@@ -24,6 +24,7 @@ function showRestaurants(){
     description.textContent = "";
     description.appendChild(getFilterNode());
     list.textContent = "";
+    headerList.textContent = "";
     restaurants.forEach(function(restaurant){
       var val = restaurant.getRatingAverage();
       if(minStar.value<=val && maxStar.value>=val)showRestaurant(restaurant);

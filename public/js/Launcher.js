@@ -25,6 +25,7 @@ function getDimensions(node){
 }
 
 function showMapFrom(left){
+
     document.getElementById("map").style.left = left+"px";
     document.getElementById("map").style.width = (window.innerWidth-left)+"px";
 }
