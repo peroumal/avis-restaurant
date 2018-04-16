@@ -19,8 +19,9 @@ function Restaurant(restaurant){
 
 Restaurant.prototype.createNode = function() {
   var container= document.createElement("div");
+  container.classList = "restaurant";
+  var title= document.createElement("h5");
 
-  var title= document.createElement("h4");
   title.textContent = this.restaurantName;
   container.appendChild(title);
 

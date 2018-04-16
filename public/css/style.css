@@ -64,10 +64,7 @@ nav {
 }
 
 #results {
-  padding-top: 20px;
-  padding-left: 20px;
   height:100%;
-  padding-right: 10px;
 }
 
 #ratings {
@@ -117,17 +114,20 @@ nav {
 }
 
 h5{
-  display: inline-block;
+  display: block;
+  margin-bottom: 0px;
   font-weight: bolder;
   font-size: 1.3em;
 }
 
-
-h4{
-    display: inline-block;
-    margin-right: 3px;
+.restaurant:hover{
+  background: #EEEEEE
 }
 
+.restaurant{
+  padding: 10px 10px 10px 10px;
+
+}
 h3{
       padding-top: 6px;
       margin-right: 10px;
