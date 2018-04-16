@@ -86,8 +86,10 @@ nav {
 }
 
 .white{
-  color: white;
+  color: #8C9EFF;
   display: inline-block;
+  padding-right: 10px;
+  padding-left: 10px;
 }
 
 #action-bar{

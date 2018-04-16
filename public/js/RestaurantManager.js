@@ -119,7 +119,9 @@ function displayInfoRestaurant(restaurant){
   description.textContent = "";
   headerList.textContent = "";
   restaurant.refresh = displayInfoRestaurant;
-  description.appendChild(restaurant.createAddressNode());
+  var addrNode =restaurant.createAddressNode();
+  addrNode.style.color = "#8C9EFF";
+  description.appendChild(addrNode);
   headerList.appendChild(restaurant.createStreetViewNode());
   ActionBar.set(restaurant.restaurantName,showRestaurants);
   list.appendChild(restaurant.createInfoNode());
