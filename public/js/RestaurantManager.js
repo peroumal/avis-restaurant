@@ -33,7 +33,7 @@ function getNearbyRestaurants(callback){
       for (var i = 0; i < results.length; i++)
         mapsRestaurants.push(newRestaurantFromPlace(results[i]));
     else console.log("results failed");
-    showRestaurants();
+    showRestaurants(true);
   });
 }
 
@@ -52,30 +52,26 @@ function newRestaurantFromPlace(result){
   return restaurant;
 }
 
-function showRestaurants(){
-
+function showRestaurants(offline){
   minStar.onUpdate = showRestaurants;
   maxStar.onUpdate = showRestaurants;
-    description.textContent = "";
-    description.appendChild(getFilterNode());
-    list.textContent = "";
-    headerList.textContent = "";
-    restaurants.forEach(function(restaurant){
-      var val = restaurant.getRatingAverage();
-      if(minStar.value<=val && maxStar.value>=val)showRestaurant(restaurant);
-    });
-    mapsRestaurants.forEach(function(restaurant){
-      var val = restaurant.getRatingAverage();
-      if(minStar.value<=val && maxStar.value>=val)showRestaurant(restaurant);
-    });
-    getNearbyRestaurants();
-    ActionBar.set(null,null);
+  description.textContent = "";
+  list.textContent = "";
+  headerList.textContent = "";
+  description.appendChild(getFilterNode());
+  restaurants.forEach(showRestaurant)
+  mapsRestaurants.forEach(showRestaurant);
+  if(!offline) getNearbyRestaurants();
+  ActionBar.set(null,null);
 }
 
 function showRestaurant(restaurant){
-  var marker = createRestaurantMarker(restaurant);
-  if(isVisible(marker))
+  var val = restaurant.getRatingAverage();
+  var visible =  map.getBounds().contains(restaurant.position);
+  if(visible && minStar.value<=val && maxStar.value>=val){
+    createRestaurantMarker(restaurant);
     appendRestaurant(restaurant);
+  }
 }
 
 function appendRestaurant(restaurant){
@@ -90,6 +86,7 @@ function createRestaurantMarker(restaurant){
     map: map,
     title:restaurant.restaurantName
   });
+
 
   restaurant.marker.addListener('click', function(){
     mode = "discover";
@@ -149,8 +146,4 @@ function addRestaurant(lat,long){
   });
   $('#exampleModal').modal('toggle');
   $('#exampleModal').modal('show');
-}
-
-function isVisible(marker){
-  return map.getBounds().contains(marker.getPosition());
 }
