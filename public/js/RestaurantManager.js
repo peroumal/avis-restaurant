@@ -47,7 +47,7 @@ function newRestaurantFromPlace(result){
     address: result.vicinity,
     rating: result.rating,
     id: result.place_id,
-    ratings: []
+    ratings: [{stars:result.rating,comment:""}]
   };
   var restaurant = new Restaurant(info);
 
