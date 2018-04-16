@@ -46,6 +46,7 @@ function newRestaurantFromPlace(result){
     long: result.geometry.location.lng(),
     address: result.vicinity,
     rating: result.rating,
+    id: result.place_id,
     ratings: []
   };
   var restaurant = new Restaurant(info);

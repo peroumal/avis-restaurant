@@ -1,5 +1,6 @@
 
 function Restaurant(restaurant){
+  if(restaurant.id) this.id = restaurant.id;
   this.lat = restaurant.lat;
   if(restaurant.rating) this.rating = Math.round(restaurant.rating);
   this.long = restaurant.long;
@@ -68,6 +69,12 @@ Restaurant.prototype.createInfoNode = function(){
   this.ratings.forEach(function(rate){
     container.appendChild(restaurant.createRatingNode(rate.stars,rate.comment));
   });
+  if(this.id) {
+    console.log("results:reviews","clled");
+    getDetailFrom(this.id,function(data){
+    console.log("results:reviews",data.reviews);
+  });
+}
   return container;
 }
 
@@ -147,18 +154,6 @@ Restaurant.prototype.getRatingAverage = function() {
   if(nb===0) return this.rating;
   this.rating = Math.round(total/nb);
   return this.rating;
-},
-
-Restaurant.prototype.appendsRatings = function() {
-
-  this.ratings.forEach(function(rating){
-    var stars = document.createElement("div");
-    var comment = document.createElement("p");
-    stars.textContent = rating.stars;
-    comment.textContent = rating.comment;
-    var rate = document.createElement()
-  });
-  this.node.appendChild();
 },
 
 Restaurant.prototype.isVisible = function () {
