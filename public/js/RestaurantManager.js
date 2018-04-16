@@ -5,8 +5,10 @@ var minStar = new Star("selected");
 var maxStar = new Star("selected");
 minStar.setValue(1);
 maxStar.setValue(5);
+minStar.onUpdate = showRestaurants;
+maxStar.onUpdate = showRestaurants;
 
-function getFilterNode(){
+function getFilter(){
     var container = document.createElement("div");
     var h6 = document.createElement("h6");
     h6.textContent = "Afficher les restaurants notés entre : " ;
@@ -53,23 +55,27 @@ function newRestaurantFromPlace(result){
 }
 
 function showRestaurants(offline){
-  minStar.onUpdate = showRestaurants;
-  maxStar.onUpdate = showRestaurants;
+
+  // Reinit to empty
   description.textContent = "";
   list.textContent = "";
   headerList.textContent = "";
-  description.appendChild(getFilterNode());
+  markers.forEach(function(marker){marker.setMap(null)});
+  markers = [];
+  ActionBar.set(null,null);
+
+  // Add values
+  description.appendChild(getFilter());
   restaurants.forEach(showRestaurant)
   mapsRestaurants.forEach(showRestaurant);
   if(!offline) getNearbyRestaurants();
-  ActionBar.set(null,null);
 }
 
 function showRestaurant(restaurant){
-  var val = restaurant.getRatingAverage();
+  var rating = restaurant.getRatingAverage();
   var visible =  map.getBounds().contains(restaurant.position);
-  if(visible && minStar.value<=val && maxStar.value>=val){
-    createRestaurantMarker(restaurant);
+  if(visible && minStar.value<=rating && maxStar.value>=rating){
+    markers.push(createRestaurantMarker(restaurant));
     appendRestaurant(restaurant);
   }
 }
@@ -110,7 +116,6 @@ function displayInfoRestaurant(restaurant){
   list.appendChild(restaurant.createInfoNode());
   setAdaptativeDimensions();
 }
-
 
 function addRestaurant(lat,long){
   var label = document.getElementById("exampleModalLabel");
