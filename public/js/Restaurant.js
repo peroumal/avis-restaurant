@@ -71,7 +71,7 @@ Restaurant.prototype.createAddressNode = function () {
 Restaurant.prototype.createInfoNode = function(){
   var container= document.createElement("div");
   container.appendChild(this.createTitleNode("Avis"));
-  if(this.ratings && this.ratings != [] && this.ratings != null){
+  if(this.ratings && this.ratings != []){
     this.ratings.forEach(function(rate){
       container.appendChild(restaurant.createRatingNode(rate.stars,rate.comment));
     });
@@ -87,6 +87,7 @@ Restaurant.prototype.createInfoNode = function(){
       for(var i=0; i<parsed.reviews.length ;i++){
         var stars = parsed.reviews[i].rating;
         var comment = parsed.reviews[i].text;
+        container.appendChild(resto.createRatingNode(stars,comment));
         resto.ratings.push({stars:stars,comment:comment});
       }
       console.log("saved:reviews -> ratings",resto.ratings);
