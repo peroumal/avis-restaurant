@@ -21,12 +21,15 @@ var ActionBar = {
   },
 
   onSearch: function(e){
-    var input = e.target;
-    var options = {
-      bounds: map.getBounds(),
-      types: ['restaurant']
-    };
-    var autocomplete = new google.maps.places.SearchBox(input, options);
+    var text = e.target.value;
+    console.log("search:"+text);
+    var service = new google.maps.places.AutocompleteService(null,{
+    });
+    service.getPlacePredictions({input: text,  componentRestrictions: {country: "gp"}}, function(predictions,status){
+        console.log("predictions:",predictions);
+    });
+
+    //var autocomplete = new google.maps.places.SearchBox(e.target, options);
   },
 
   onDisplayNavigation:function(e){

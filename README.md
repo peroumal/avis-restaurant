@@ -39,7 +39,7 @@ function getDetailFrom(placeId,callback){
   +"&key="+"YOUR_API_KEY";
   $.ajax({
       url: url,
-      dataType: "jsonp",
+      dataType: "json",
       cache:false,
       success:callback
   });
