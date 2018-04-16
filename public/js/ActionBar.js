@@ -29,7 +29,6 @@ var ActionBar = {
         console.log("predictions:",predictions);
     });
 
-    //var autocomplete = new google.maps.places.SearchBox(e.target, options);
   },
 
   onDisplayNavigation:function(e){

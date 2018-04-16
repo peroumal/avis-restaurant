@@ -53,9 +53,10 @@ class Star{
   }
 
   setValue (value) {
+    var hasChanged = (value != this.value);
     this.check(value);
     if(this.hasDescription) this.descriptionNode.textContent = this.descriptions[value];
-    if(this.onUpdate!=undefined && this.onUpdate!=null) this.onUpdate(value);
+    if(hasChanged && this.onUpdate!=undefined && this.onUpdate!=null) this.onUpdate(value);
   }
 
   check(value){
