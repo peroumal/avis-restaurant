@@ -9,7 +9,7 @@ var ActionBar = {
       this.title = title;
       this.back = back;
       this.get("title").textContent = "";
-      insertInputField(this.get("title"),"trouver un restaurant","Ma recherche");
+      insertInputField(this.get("title"),"trouver un restaurant","Ma recherche").addEventListener("input",this.onSearch);
       this.get("icon").setAttribute("src","assets/pic/back.svg");
       this.get("icon").onclick=this.onDisplayNavigation;
     if(title != null && back!=null){
@@ -18,6 +18,15 @@ var ActionBar = {
       this.get("icon").setAttribute("src","assets/pic/back.svg");
       this.get("icon").onclick = back;
     }
+  },
+
+  onSearch: function(e){
+    var input = e.target;
+    var options = {
+      bounds: map.getBounds(),
+      types: ['restaurant']
+    };
+    var autocomplete = new google.maps.places.SearchBox(input, options);
   },
 
   onDisplayNavigation:function(e){
