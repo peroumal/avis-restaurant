@@ -21,31 +21,33 @@ function getNearbyRestaurants(callback){
   console.log("getNearbyRestaurants called");
   var service = new google.maps.places.PlacesService(map);
   var request = {
-    bounds:map.getBounds()
+    bounds:map.getBounds(),
+    type: "restaurant",
+    location:lastPos,
+    rankby:"distance"
   }
   console.log("params generated");
   service.nearbySearch(request, function(results,status){
+
+    var restaurants = [];
     if (status == google.maps.places.PlacesServiceStatus.OK) {
-      console.log("results are ok");
-      var restaurants = [];
-      for (var i = 0; i < results.length; i++) {
-
-        var result = results[i];
-
-        if(!result.types.includes("food") || !result.types.includes("restaurant")) continue;
-          console.log("result "+i+" = content:",result);
-          var info = {
-            restaurantName:result.name,
-            lat: result.geometry.location.lat(),
-            long: result.geometry.location.lng(),
-            address: result.vicinity,
-            ratings: [{stars: result.rating, comment:""}]
-          };
-          var restaurant = new Restaurant(info);
-        }
+      for (var i = 0; i < results.length; i++) console.log("new restaurant from place",createRestaurantFromPlace(results[i]));
     } else console.log("results failed");
   });
 }
+
+function createRestaurantFromPlace(result){
+  console.log("result "+result.placeid+" = content:",result);
+  var info = {
+    restaurantName:result.name,
+    lat: result.geometry.location.lat(),
+    long: result.geometry.location.lng(),
+    address: result.vicinity,
+    ratings: [{stars: result.rating, comment:""}]
+  };
+  var restaurant = new Restaurant(info);
+}
+
 function showRestaurants(){
 
   minStar.onUpdate = showRestaurants;

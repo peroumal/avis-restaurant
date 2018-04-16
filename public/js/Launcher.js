@@ -1,4 +1,5 @@
 var mode = "near";
+var lastPos={};
 $('#myModal').on('shown.bs.modal', function () {
   $('#myInput').trigger('focus')
 });
@@ -91,7 +92,8 @@ function insertInputField(container,title,placeholder){
 function initMap() {
   if(navigator.geolocation)
     navigator.geolocation.getCurrentPosition(function(pos){
-      displayMap(pos.coords.latitude, pos.coords.longitude);
+      lastPos = {lat:pos.coords.latitude,lng:pos.coords.longitude};
+      displayMap(lastPos.lat, lastPos.lng);
     },function(){
       displayMap(restaurants[0].lat,restaurants[0].long);
     });
