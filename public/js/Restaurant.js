@@ -1,7 +1,7 @@
 
 function Restaurant(restaurant){
   this.lat = restaurant.lat;
-  if(restaurant.rating) this.rating = restaurant.rating;
+  if(restaurant.rating) this.rating = Math.round(restaurant.rating);
   this.long = restaurant.long;
   this.address = restaurant.address;
   this.refresh = null;
