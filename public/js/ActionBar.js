@@ -10,12 +10,14 @@ var ActionBar = {
       this.title = title;
       this.back = back;
       this.get("title").textContent = "";
+      this.get("title").style.lineHeight = "";
       insertInputField(this.get("title"),"trouver un restaurant","Ma recherche").addEventListener("input",this.onSearch);
       this.get("icon").setAttribute("src","assets/pic/back.svg");
       this.get("icon").onclick=this.onDisplayNavigation;
     if(title != null && back!=null){
       this.show();
       this.get("title").textContent = title;
+      this.get("title").style.lineHeight = "40px";
       this.get("icon").setAttribute("src","assets/pic/back.svg");
       this.get("icon").onclick = back;
     }
