@@ -78,7 +78,7 @@ Restaurant.prototype.createInfoNode = function(){
   }
 
 
-  if(this.id) {
+  if(this.id && this.ratings && this.ratings.length<1) {
     console.log("results:reviews","clled");
     var resto = this;
     getDetailFrom(this.id,function(data){
@@ -90,7 +90,6 @@ Restaurant.prototype.createInfoNode = function(){
         container.appendChild(resto.createRatingNode(stars,comment));
         resto.ratings.push({stars:stars,comment:comment});
       }
-      console.log("saved:reviews -> ratings",resto.ratings);
   });
 }
   return container;
