@@ -12,7 +12,7 @@ function getFilterNode(){
     h6.textContent = "Afficher les restaurants notés entre : " ;
     container.appendChild(h6);
     container.appendChild(this.minStar.node);
-    container.appendChild(document.createTextNode(" et "));
+    container.appendChild(document.createTextNode("  et  "));
     container.appendChild(this.maxStar.node);
     return container;
 };
@@ -22,30 +22,34 @@ function getNearbyRestaurants(callback){
   var service = new google.maps.places.PlacesService(map);
   var request = {
     bounds:map.getBounds(),
+    location:map.getCenter(),
     type: "restaurant",
-    location:lastPos,
     rankby:"distance"
   }
   console.log("params generated");
   service.nearbySearch(request, function(results,status){
-
-    var restaurants = [];
-    if (status == google.maps.places.PlacesServiceStatus.OK) {
-      for (var i = 0; i < results.length; i++) console.log("new restaurant from place",createRestaurantFromPlace(results[i]));
-    } else console.log("results failed");
+    mapsRestaurants = [];
+    if (status == google.maps.places.PlacesServiceStatus.OK)
+      for (var i = 0; i < results.length; i++)
+        mapsRestaurants.push(newRestaurantFromPlace(results[i]));
+    else console.log("results failed");
+    showRestaurants();
   });
 }
 
-function createRestaurantFromPlace(result){
-  console.log("result "+result.placeid+" = content:",result);
+function newRestaurantFromPlace(result){
   var info = {
     restaurantName:result.name,
     lat: result.geometry.location.lat(),
     long: result.geometry.location.lng(),
     address: result.vicinity,
-    ratings: [{stars: result.rating, comment:""}]
+    rating: result.rating,
+    ratings: []
   };
   var restaurant = new Restaurant(info);
+
+  console.log("result "+result.placeid+" = content:",restaurant);
+  return restaurant;
 }
 
 function showRestaurants(){
@@ -57,6 +61,10 @@ function showRestaurants(){
     list.textContent = "";
     headerList.textContent = "";
     restaurants.forEach(function(restaurant){
+      var val = restaurant.getRatingAverage();
+      if(minStar.value<=val && maxStar.value>=val)showRestaurant(restaurant);
+    });
+    mapsRestaurants.forEach(function(restaurant){
       var val = restaurant.getRatingAverage();
       if(minStar.value<=val && maxStar.value>=val)showRestaurant(restaurant);
     });

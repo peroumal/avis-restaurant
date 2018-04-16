@@ -1,6 +1,7 @@
 
 function Restaurant(restaurant){
   this.lat = restaurant.lat;
+  if(restaurant.rating) this.rating = restaurant.rating;
   this.long = restaurant.long;
   this.address = restaurant.address;
   this.refresh = null;
@@ -143,8 +144,9 @@ Restaurant.prototype.getRatingAverage = function() {
     nb++;
     total += e.stars;
   });
-  if(nb===0) return undefined;
-  return Math.round(total/nb);
+  if(nb===0) return this.rating;
+  this.rating = Math.round(total/nb);
+  return this.rating;
 },
 
 Restaurant.prototype.appendsRatings = function() {
