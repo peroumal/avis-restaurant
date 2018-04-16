@@ -26,13 +26,12 @@ var ActionBar = {
   onSearch: function(e){
     var text = e.target.value;
     console.log("search:"+text);
-
+    if(e.target.value.length<=0) showRestaurants();
     var list = document.getElementById('results');
     var service = new google.maps.places.AutocompleteService(null,{});
     service.getPlacePredictions({input: text,  componentRestrictions: {country: "gp"}}, function(predictions,status){
         console.log("predictions:",predictions);
         list.textContent = "";
-        list.appendChild()
     });
 
   },
