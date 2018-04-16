@@ -96,14 +96,18 @@ function createRestaurantMarker(restaurant){
 
 
   restaurant.marker.addListener('click', function(){
-    mode = "discover";
-    map.setCenter(restaurant.marker.getPosition());
-    map.setZoom(16);
-    displayInfoRestaurant(restaurant);
-    restaurant.onSelected(map);
-    toNormalScreen();
+    goToRestaurant(restaurant);
   });
   return restaurant.marker;
+}
+
+function goToRestaurant(restaurant){
+  mode = "discover";
+  map.setCenter(restaurant.marker.getPosition());
+  map.setZoom(16);
+  displayInfoRestaurant(restaurant);
+  restaurant.onSelected(map);
+  toNormalScreen();
 }
 
 function displayInfoRestaurant(restaurant){

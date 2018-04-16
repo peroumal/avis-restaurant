@@ -126,7 +126,7 @@ h5{
 
 .restaurant{
   padding: 10px 10px 10px 10px;
-
+  cursor: pointer;
 }
 h3{
       padding-top: 6px;

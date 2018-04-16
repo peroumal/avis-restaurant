@@ -19,6 +19,10 @@ function Restaurant(restaurant){
 
 Restaurant.prototype.createNode = function() {
   var container= document.createElement("div");
+  var resto = this;
+  container.addEventListener("click",function(){
+    goToRestaurant(resto);
+  });
   container.classList = "restaurant";
   var title= document.createElement("h5");
 
