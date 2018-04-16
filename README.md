@@ -33,4 +33,17 @@ function getPhotoUrlAt(lat,lon){
     return url;
 }
 
+// Get details linked to a place by his id
+function getDetailFrom(placeId,callback){
+  var url = "https://maps.googleapis.com/maps/api/place/details/json?placeid="+placeId
+  +"&key="+"YOUR_API_KEY";
+  $.ajax({
+      url: url,
+      dataType: "jsonp",
+      cache:false,
+      success:callback
+  });
+}
+
+
 ```

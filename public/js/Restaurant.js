@@ -72,7 +72,9 @@ Restaurant.prototype.createInfoNode = function(){
   if(this.id) {
     console.log("results:reviews","clled");
     getDetailFrom(this.id,function(data){
-    console.log("results:reviews",data.reviews);
+      var stringifyed = JSON.stringify(data);
+      var parsed = JSON.parse(stringifyed);
+    console.log("results:parsed",parsed);
   });
 }
   return container;
