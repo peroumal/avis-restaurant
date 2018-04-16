@@ -51,11 +51,11 @@ function newRestaurantFromPlace(result){
     address: result.vicinity,
     rating: result.rating,
     id: result.place_id,
-    ratings: [{stars:result.rating,comment:""}]
+    ratings: []
   };
+
   var restaurant = new Restaurant(info);
 
-  console.log("result "+result.placeid+" = content:",restaurant);
   return restaurant;
 }
 

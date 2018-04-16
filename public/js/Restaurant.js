@@ -71,15 +71,25 @@ Restaurant.prototype.createAddressNode = function () {
 Restaurant.prototype.createInfoNode = function(){
   var container= document.createElement("div");
   container.appendChild(this.createTitleNode("Avis"));
-  this.ratings.forEach(function(rate){
-    container.appendChild(restaurant.createRatingNode(rate.stars,rate.comment));
-  });
+  if(this.ratings && this.ratings != [] && this.ratings != null){
+    this.ratings.forEach(function(rate){
+      container.appendChild(restaurant.createRatingNode(rate.stars,rate.comment));
+    });
+  }
+
+
   if(this.id) {
     console.log("results:reviews","clled");
+    var resto = this;
     getDetailFrom(this.id,function(data){
       var stringifyed = JSON.stringify(data);
       var parsed = JSON.parse(stringifyed);
-    console.log("results:parsed",parsed);
+      for(var i=0; i<parsed.reviews.length ;i++){
+        var stars = parsed.reviews[i].rating;
+        var comment = parsed.reviews[i].text;
+        resto.ratings.push({stars:stars,comment:comment});
+      }
+      console.log("saved:reviews -> ratings",resto.ratings);
   });
 }
   return container;
@@ -149,6 +159,7 @@ Restaurant.prototype.setRating = function(value){
 
 Restaurant.prototype.onSelected = function() {
   console.log("Restaurant : "+this.restaurantName+" selected");
+
 },
 
 Restaurant.prototype.getRatingAverage = function() {
