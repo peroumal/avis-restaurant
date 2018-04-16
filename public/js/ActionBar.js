@@ -1,3 +1,4 @@
+
 var ActionBar = {
   isExpanded:true,
   HOME:null,
@@ -52,5 +53,6 @@ var ActionBar = {
   node.style.left = "0px";
   setAdaptativeDimensions();
   //ActionBar.get("icon").setAttribute("src","assets/pic/search.svg");
-}
+},
+
 };

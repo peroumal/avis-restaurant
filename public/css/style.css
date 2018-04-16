@@ -85,11 +85,14 @@ nav {
   background: #ABCABC;
 }
 
-
+.white{
+  color: white;
+  display: inline-block;
+}
 
 #action-bar{
   background: #283593;
-
+  height: 80px;
 }
 
 #action-icon{
@@ -107,10 +110,10 @@ nav {
 }
 
 #description {
-  background: #eeeeee;
+  float: right;
   padding-left: 10px;
   padding-right: 10px;
-  padding-top: 10px;
+  padding-top: -10px;
 }
 
 h5{
@@ -128,6 +131,7 @@ h5{
   padding: 10px 10px 10px 10px;
   cursor: pointer;
 }
+
 h3{
       padding-top: 6px;
       margin-right: 10px;

@@ -10,11 +10,15 @@ maxStar.onUpdate = showRestaurants;
 
 function getFilter(){
     var container = document.createElement("div");
-    var h6 = document.createElement("h6");
-    h6.textContent = "Afficher les restaurants notés entre : " ;
-    container.appendChild(h6);
+    var from = document.createElement("div");
+    from.classList="white";
+    from.textContent=" de ";
+    var to = document.createElement("div");
+    to.classList="white";
+    to.textContent= " à "
+    container.appendChild(from);
     container.appendChild(this.minStar.node);
-    container.appendChild(document.createTextNode("  et  "));
+    container.appendChild(to);
     container.appendChild(this.maxStar.node);
     return container;
 };
