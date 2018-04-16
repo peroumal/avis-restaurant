@@ -118,6 +118,9 @@ function displayInfoRestaurant(restaurant){
   list.textContent ="";
   description.textContent = "";
   headerList.textContent = "";
+  markers.forEach(function(marker){marker.setMap(null)});
+  markers = [];
+  markers.push(createRestaurantMarker(restaurant));
   restaurant.refresh = displayInfoRestaurant;
   var addrNode =restaurant.createAddressNode();
   addrNode.style.color = "#8C9EFF";

@@ -52,7 +52,7 @@ function displayMap(lat,lng){
   });
 
   google.maps.event.addListener(map, 'bounds_changed', function() {
-      if(mode == "near") showRestaurants();
+      if(ActionBar.title==null) showRestaurants();
   });
 
   map.addListener('click', function(e) {
