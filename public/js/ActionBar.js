@@ -7,6 +7,7 @@ var ActionBar = {
     return document.getElementById("action-"+name);
   },
   set: function(title,back){
+     if(this.title!=null && map) map.setZoom(10);
       this.title = title;
       this.back = back;
       this.get("title").textContent = "";
