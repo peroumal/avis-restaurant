@@ -58,6 +58,8 @@ var ActionBar = {
         var parsed = JSON.parse(stringifyed);
         var restaurant = newRestaurantFromDetail(parsed);
         console.log("restaurant:details",restaurant);
+          markers.push(createRestaurantMarker(restaurant));
+        goToRestaurant(restaurant);
       });
     });
 
