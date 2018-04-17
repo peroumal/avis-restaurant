@@ -104,6 +104,7 @@ nav {
 
 #action-title{
   color: #151515;
+  max-height: 40px;
   display: inline-block;
   width:85%;
   padding-left: 8px;
