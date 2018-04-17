@@ -111,10 +111,11 @@ nav {
 }
 
 #description {
-  float: right;
-  padding-left: 10px;
+  float: left;
+  height: 30px;
+  margin-left:42px;
   padding-right: 10px;
-  padding-top: -10px;
+  padding-top: -16px;
 }
 
 h5{
@@ -132,7 +133,9 @@ h5{
   padding: 10px 10px 10px 10px;
   cursor: pointer;
 }
-
+#exampleModalLabel{
+  display: inline-block;
+}
 h3{
       padding-top: 6px;
       margin-right: 10px;
