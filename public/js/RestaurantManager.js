@@ -23,17 +23,8 @@ function getFilter(){
     return container;
 };
 
-function getNearbyRestaurants(callback){
-  console.log("getNearbyRestaurants called");
-  var service = new google.maps.places.PlacesService(map);
-  var request = {
-    bounds:map.getBounds(),
-    location:map.getCenter(),
-    type: "restaurant",
-    rankby:"distance"
-  }
-  console.log("params generated");
-  service.nearbySearch(request, function(results,status){
+function getNearbyRestaurants(){
+  getNearby("restaurant",function(results,status){
     mapsRestaurants = [];
     if (status == google.maps.places.PlacesServiceStatus.OK)
       for (var i = 0; i < results.length; i++)
