@@ -6,6 +6,7 @@ var ActionBar = {
   get: function(name){
     return document.getElementById("action-"+name);
   },
+
   set: function(title,back){
      if(this.title!=null && map) map.setZoom(10);
       this.title = title;
@@ -26,7 +27,6 @@ var ActionBar = {
 
   onSearch: function(e){
     var text = e.target.value;
-    console.log("search:"+text);
     if(e.target.value.length<=0) showRestaurants();
     var list = document.getElementById('results');
     var service = new google.maps.places.AutocompleteService(null,{});
@@ -34,18 +34,14 @@ var ActionBar = {
     service.getPlacePredictions({input: text,  componentRestrictions: {country: country}}, function(predictions,status){
 
         list.textContent = "";
-        //var values = JSON.parse(predictions);
         predictions.forEach(function(value){
           var desc = value.description;
           var id = value.place_id;
-          console.log("search-place-id:",id);
           list.appendChild(ActionBar.createResultNode(desc,id));
         });
     });
 
   },
-
-
 
   createResultNode: function(description,id) {
     var container= document.createElement("h4");
@@ -78,19 +74,17 @@ var ActionBar = {
   },
 
   hide:function(){
-  ActionBar.get("icon").style.float = "right";
-  var node = ActionBar.get("bar").parentNode;
-  node.style.left = (40-getDimensions(node)[1])+"px";
-  //ActionBar.get("icon").setAttribute("src","assets/pic/search.svg");
-  showMapFrom(40);
-},
+    ActionBar.get("icon").style.float = "right";
+    var node = ActionBar.get("bar").parentNode;
+    node.style.left = (40-getDimensions(node)[1])+"px";
+    //ActionBar.get("icon").setAttribute("src","assets/pic/search.svg");
+    showMapFrom(40);},
 
   show:function(){
-  var node = ActionBar.get("bar").parentNode;
-  ActionBar.get("icon").style.float = "left";
-  node.style.left = "0px";
-  setAdaptativeDimensions();
-  //ActionBar.get("icon").setAttribute("src","assets/pic/search.svg");
-},
+    var node = ActionBar.get("bar").parentNode;
+    ActionBar.get("icon").style.float = "left";
+    node.style.left = "0px";
+    setAdaptativeDimensions();
+  },
 
 };
