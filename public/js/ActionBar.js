@@ -30,7 +30,7 @@ var ActionBar = {
     var list = document.getElementById('results');
     var service = new google.maps.places.AutocompleteService(null,{});
 
-    service.getPlacePredictions({input: text,  componentRestrictions: {country: "gp"}}, function(predictions,status){
+    service.getPlacePredictions({input: text,  componentRestrictions: {country: country}}, function(predictions,status){
 
         list.textContent = "";
         //var values = JSON.parse(predictions);
