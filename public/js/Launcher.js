@@ -95,7 +95,7 @@ function initMap() {
     navigator.geolocation.getCurrentPosition(function(pos){
       lastPos = {lat:pos.coords.latitude,lng:pos.coords.longitude};
       getPositionInfo(lastPos,function(data){
-        var addresses = data[data.length-1].address_components;
+        var addresses = data.results[data.results.length-1].address_components;
         for(var i=0;i<addresses.length;i++){
           var addr = addresses[i];
           if(addr.types.includes("country")){
