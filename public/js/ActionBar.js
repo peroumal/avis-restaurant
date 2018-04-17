@@ -35,10 +35,11 @@ var ActionBar = {
         list.textContent = "";
         //var values = JSON.parse(predictions);
         predictions.forEach(function(value){
-                  console.log("predictions:value",value);
           var desc = value.description;
           var id = value.place_id;
-          ActionBar.createResultNode(desc,id);
+
+                    console.log("predictions:value",desc);
+          list.appendChild(ActionBar.createResultNode(desc,id));
         });
     });
 
@@ -54,7 +55,7 @@ var ActionBar = {
     });*/
     container.setAttribute("id",id);
     container.classList = "restaurant";
-    var title= document.createElement("h6");
+    var title= document.createElement("h4");
 
 
     title.textContent = description;

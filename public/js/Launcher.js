@@ -1,5 +1,6 @@
 var mode = "near";
 var lastPos={};
+var country=null;
 $('#myModal').on('shown.bs.modal', function () {
   $('#myInput').trigger('focus')
 });
@@ -93,6 +94,17 @@ function initMap() {
   if(navigator.geolocation)
     navigator.geolocation.getCurrentPosition(function(pos){
       lastPos = {lat:pos.coords.latitude,lng:pos.coords.longitude};
+      getPositionInfo(lastPos,function(data){
+        var addresses = data[data.length-1].address_components;
+        for(var i=0;i<addresses.length;i++){
+          var addr = addresses[i];
+          if(addr.types.includes("country")){
+            country = addr.short_name;
+          }
+        }
+        console.log("bounds-country",country);
+      });
+
       displayMap(lastPos.lat, lastPos.lng);
     },function(){
       displayMap(restaurants[0].lat,restaurants[0].long);
