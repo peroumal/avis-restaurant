@@ -29,10 +29,38 @@ var ActionBar = {
     if(e.target.value.length<=0) showRestaurants();
     var list = document.getElementById('results');
     var service = new google.maps.places.AutocompleteService(null,{});
+
     service.getPlacePredictions({input: text,  componentRestrictions: {country: "gp"}}, function(predictions,status){
-        console.log("predictions:",predictions);
+
         list.textContent = "";
+        //var values = JSON.parse(predictions);
+        predictions.forEach(function(value){
+                  console.log("predictions:value",value);
+          var desc = value.description;
+          var id = value.place_id;
+          ActionBar.createResultNode(desc,id);
+        });
     });
+
+  },
+
+
+
+  createResultNode: function(description,id) {
+    var container= document.createElement("div");
+    /*var resto = this;
+    container.addEventListener("click",function(){
+      goToRestaurant(resto);
+    });*/
+    container.setAttribute("id",id);
+    container.classList = "restaurant";
+    var title= document.createElement("h6");
+
+
+    title.textContent = description;
+    container.appendChild(title);
+
+    return container;
 
   },
 
