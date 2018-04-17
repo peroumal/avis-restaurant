@@ -122,7 +122,6 @@ function createRestaurantMarker(restaurant){
 }
 
 function goToRestaurant(restaurant){
-  mode = "discover";
   map.setCenter(restaurant.marker.getPosition());
   map.setZoom(16);
   displayInfoRestaurant(restaurant);

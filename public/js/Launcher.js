@@ -1,4 +1,4 @@
-var mode = "near";
+
 var lastPos={};
 var country=null;
 $('#myModal').on('shown.bs.modal', function () {
