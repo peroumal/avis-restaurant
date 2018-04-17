@@ -52,10 +52,17 @@ var ActionBar = {
     container.addEventListener("click",function(e){
       var targetid = e.target.getAttribute("id");
       console.log("result:target:id:",targetid);
+
+      getDetailFrom(targetid,function(data){
+        var stringifyed = JSON.stringify(data);
+        var parsed = JSON.parse(stringifyed);
+        console.log("result:details",parsed);
+      });
+
     });
+
     container.classList = "restaurant";
     container.textContent = description;
-
     return container;
 
   },
