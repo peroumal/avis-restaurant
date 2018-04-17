@@ -137,7 +137,14 @@ h5{
   display: inline-block;
 }
 h3{
+
+    margin-left:10px;
       padding-top: 6px;
       margin-right: 10px;
       display: inline-block;
+}
+
+.rate {
+  margin-left:10px;
+  margin-right:10px;
 }

@@ -35,21 +35,15 @@ class Star{
       for (var j=pos;j<context.stars.length;j++) context.stars[j].setAttribute("src","assets/pic/star-unselected.svg");
       if(context.value == pos) context.check(pos);
       if(context.hasDescription) context.descriptionNode.textContent = context.descriptions[pos];
-      context.onChange();
     });
     img.addEventListener("mouseout",function(e){
         if(e.relatedTarget.classList == "star") console.log("continue");
         else context.setValue(context.value);
-        context.onChange();
     });
     img.addEventListener("click",function(e){
       var pos = context.stars.indexOf(img)+1;
       context.setValue(pos);
     });
-  }
-
-  onChange(){
-
   }
 
   setValue (value) {
