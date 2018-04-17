@@ -33,11 +33,12 @@ function showMapFrom(left){
 }
 
 function setAdaptativeDimensions(){
-  var dimen = getDimensions(document.getElementById("action-bar"));
+  var dimen = getDimensions(ActionBar.get("bar"));
   var actionBarHeight = dimen[0];
   var actionBarWidth = dimen[1]
   showMapFrom(actionBarWidth);
-
+  ActionBar.get("bar").parentNode.style.left = "0px";
+  ActionBar.get("icon").style.float = "left";
   document.getElementById("restaurant-list").style.height = (window.innerHeight-actionBarHeight)+"px";
   document.getElementById("map").style.height = document.documentElement.scrollHeight+"px";
 }
@@ -84,7 +85,6 @@ function toNormalScreen(){
           document.msExitFullscreen();
       }
 }
-
 
 function insertInputField(container,title,placeholder){
   var label = document.createElement("label");
