@@ -54,6 +54,16 @@ function displayMap(lat,lng){
 
   google.maps.event.addListener(map, 'bounds_changed', function() {
       if(ActionBar.title==null) showRestaurants();
+
+      getPositionInfo({lat:map.getCenter().lat(),lng:map.getCenter().lng()},function(data){
+        var addresses = data.results[data.results.length-1].address_components;
+        for(var i=0;i<addresses.length;i++){
+          var addr = addresses[i];
+          if(addr.types.includes("country"))
+            country = addr.short_name;
+        }
+        console.log("bounds-country",country);
+      });
   });
 
   map.addListener('click', function(e) {
@@ -94,16 +104,6 @@ function initMap() {
   if(navigator.geolocation)
     navigator.geolocation.getCurrentPosition(function(pos){
       lastPos = {lat:pos.coords.latitude,lng:pos.coords.longitude};
-      getPositionInfo(lastPos,function(data){
-        var addresses = data.results[data.results.length-1].address_components;
-        for(var i=0;i<addresses.length;i++){
-          var addr = addresses[i];
-          if(addr.types.includes("country")){
-            country = addr.short_name;
-          }
-        }
-        console.log("bounds-country",country);
-      });
 
       displayMap(lastPos.lat, lastPos.lng);
     },function(){
