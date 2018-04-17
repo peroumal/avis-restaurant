@@ -93,7 +93,7 @@ Restaurant.prototype.createInfoNode = function(){
   });
 }
   return container;
-}
+},
 
 Restaurant.prototype.createTitleNode = function (name) {
   var container= document.createElement("div");

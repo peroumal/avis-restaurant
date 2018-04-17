@@ -87,7 +87,7 @@ function showRestaurants(offline){
 
   // Add values
   description.appendChild(getFilter());
-  restaurants.forEach(showRestaurant)
+  restaurants.forEach(showRestaurant);
   mapsRestaurants.forEach(showRestaurant);
   if(!offline) getNearbyRestaurants();
 }
