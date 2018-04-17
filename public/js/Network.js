@@ -30,7 +30,7 @@ function getNearby(type,callback){
   var request = {
     bounds:map.getBounds(),
     location:map.getCenter(),
-    type: "type",
+    types: [type],
     rankby:"distance"
   }
   console.log("params generated");
