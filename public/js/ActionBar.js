@@ -37,8 +37,7 @@ var ActionBar = {
         predictions.forEach(function(value){
           var desc = value.description;
           var id = value.place_id;
-
-                    console.log("predictions:value",desc);
+          console.log("search-place-id:",id);
           list.appendChild(ActionBar.createResultNode(desc,id));
         });
     });
@@ -48,18 +47,14 @@ var ActionBar = {
 
 
   createResultNode: function(description,id) {
-    var container= document.createElement("div");
-    /*var resto = this;
-    container.addEventListener("click",function(){
-      goToRestaurant(resto);
-    });*/
+    var container= document.createElement("h4");
     container.setAttribute("id",id);
+    container.addEventListener("click",function(e){
+      var targetid = e.target.getAttribute("id");
+      console.log("result:target:id:",targetid);
+    });
     container.classList = "restaurant";
-    var title= document.createElement("h4");
-
-
-    title.textContent = description;
-    container.appendChild(title);
+    container.textContent = description;
 
     return container;
 
