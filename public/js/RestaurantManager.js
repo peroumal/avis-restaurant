@@ -59,6 +59,22 @@ function newRestaurantFromPlace(result){
   return restaurant;
 }
 
+function newRestaurantFromDetail(result){
+  var info = {
+    restaurantName:result.name,
+    lat: result.geometry.location.lat,
+    long: result.geometry.location.lng,
+    address: result.vicinity,
+    rating: result.rating,
+    id: result.place_id,
+    ratings: []
+  };
+
+  var restaurant = new Restaurant(info);
+
+  return restaurant;
+}
+
 function showRestaurants(offline){
 
   // Reinit to empty

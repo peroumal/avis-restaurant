@@ -56,9 +56,9 @@ var ActionBar = {
       getDetailFrom(targetid,function(data){
         var stringifyed = JSON.stringify(data);
         var parsed = JSON.parse(stringifyed);
-        console.log("result:details",parsed);
+        var restaurant = newRestaurantFromDetail(parsed);
+        console.log("restaurant:details",restaurant);
       });
-
     });
 
     container.classList = "restaurant";
