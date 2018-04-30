@@ -4,6 +4,7 @@ class Star{
   constructor(checked,size){
     this.stars = [];
     this.value=0;
+    this.size = (size)?size:"18px";
     this.onUpdate=null;
     this.checked = checked;
     this.node = document.createElement("a");
@@ -12,10 +13,7 @@ class Star{
       var img = document.createElement("img");
       img.classList = "star";
       this.stars.push(img);
-      if(size) {
-        img.style.height=size;
-        img.style.width = size;
-      }
+      img.style.height = img.style.width = size;
       this.node.appendChild(img);
       if (this.checked=="selected") this.listenSelectionEvent(img)
     }
@@ -36,13 +34,13 @@ class Star{
       if(context.value == pos) context.check(pos);
       if(context.hasDescription) context.descriptionNode.textContent = context.descriptions[pos];
     });
+
     img.addEventListener("mouseout",function(e){
-        if(e.relatedTarget.classList == "star") console.log("continue");
-        else context.setValue(context.value);
+        if(e.relatedTarget.classList != "star") context.setValue(context.value);
     });
+
     img.addEventListener("click",function(e){
-      var pos = context.stars.indexOf(img)+1;
-      context.setValue(pos);
+      context.setValue(context.stars.indexOf(img)+1);
     });
   }
 
@@ -56,7 +54,6 @@ class Star{
   check(value){
     var pos=0;
     this.value = value;
-    console.log("onSetStar:"+value+"checked="+this.checked);
     var status = this.checked;
     this.stars.forEach(function(star){
       var name = status;
